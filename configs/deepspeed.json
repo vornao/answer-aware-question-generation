@@ -12,9 +12,9 @@
             "device": "cpu"
         },
         "overlap_comm": true,
-        "sub_group_size": 1e6,
-        "stage3_max_live_parameters": 1e6,
-        "stage3_max_reuse_distance": 1e6,
+        "sub_group_size": 1e9,
+        "stage3_max_live_parameters": 1e9,
+        "stage3_max_reuse_distance": 1e9,
         "stage3_gather_16bit_weights_on_model_save": "auto",
         "zero_quantized_weights": true,
         "zero_quantized_gradients": true
@@ -23,7 +23,7 @@
     "gradient_clipping": "auto",
     "steps_per_print": 2000,
     "train_batch_size": "auto",
-    "train_micro_batch_size_per_gpu": 1,
+    "train_micro_batch_size_per_gpu": "auto",
     "wall_clock_breakdown": false,
     "quantize_training": {
         "enabled": true,
