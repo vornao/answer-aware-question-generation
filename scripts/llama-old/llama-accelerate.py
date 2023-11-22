@@ -159,6 +159,8 @@ training_args = TrainingArguments(
     fp16_opt_level=True,
     gradient_checkpointing=False,
     logging_dir=script_args.log_dir,
+    # add trainer config finalize
+    
 )
 
 deepspeed_plugin = DeepSpeedPlugin(zero_stage=3, gradient_accumulation_steps=1, offload_optimizer_device='cpu', offload_param_device='cpu')
