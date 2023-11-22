@@ -67,7 +67,9 @@ NUM_SHARDS = {
 
 
 def compute_intermediate_size(n, ffn_dim_multiplier=1, multiple_of=256):
-    return multiple_of * ((int(ffn_dim_multiplier * int(8 * n / 3)) + multiple_of - 1) // multiple_of)
+    return multiple_of * (
+        (int(ffn_dim_multiplier * int(8 * n / 3)) + multiple_of - 1) // multiple_of
+    )
 
 
 def read_json(path):
@@ -80,7 +82,13 @@ def write_json(text, path):
         json.dump(text, f)
 
 
-def write_model(model_path, input_base_path, model_size, tokenizer_path=None, safe_serialization=True):
+def write_model(
+    model_path,
+    input_base_path,
+    model_size,
+    tokenizer_path=None,
+    safe_serialization=True,
+):
     # for backward compatibility, before you needed the repo to be called `my_repo/model_size`
     if not os.path.isfile(os.path.join(input_base_path, "params.json")):
         input_base_path = os.path.join(input_base_path, model_size)
@@ -97,13 +105,17 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
     dim = params["dim"]
     dims_per_head = dim // n_heads
     base = params.get("rope_theta", 10000.0)
-    inv_freq = 1.0 / (base ** (torch.arange(0, dims_per_head, 2).float() / dims_per_head))
+    inv_freq = 1.0 / (
+        base ** (torch.arange(0, dims_per_head, 2).float() / dims_per_head)
+    )
     if base > 10000.0:
         max_position_embeddings = 16384
     else:
         max_position_embeddings = 2048
 
-    tokenizer_class = LlamaTokenizer if LlamaTokenizerFast is None else LlamaTokenizerFast
+    tokenizer_class = (
+        LlamaTokenizer if LlamaTokenizerFast is None else LlamaTokenizerFast
+    )
     if tokenizer_path is not None:
         tokenizer = tokenizer_class(tokenizer_path)
         tokenizer.save_pretrained(model_path)
@@ -120,18 +132,27 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
 
     # permute for sliced rotary
     def permute(w, n_heads=n_heads, dim1=dim, dim2=dim):
-        return w.view(n_heads, dim1 // n_heads // 2, 2, dim2).transpose(1, 2).reshape(dim1, dim2)
+        return (
+            w.view(n_heads, dim1 // n_heads // 2, 2, dim2)
+            .transpose(1, 2)
+            .reshape(dim1, dim2)
+        )
 
     print(f"Fetching all parameters from the checkpoint at {input_base_path}.")
     # Load weights
     if model_size == "7B":
         # Not sharded
         # (The sharded implementation would also work, but this is simpler.)
-        loaded = torch.load(os.path.join(input_base_path, "consolidated.00.pth"), map_location="cpu")
+        loaded = torch.load(
+            os.path.join(input_base_path, "consolidated.00.pth"), map_location="cpu"
+        )
     else:
         # Sharded
         loaded = [
-            torch.load(os.path.join(input_base_path, f"consolidated.{i:02d}.pth"), map_location="cpu")
+            torch.load(
+                os.path.join(input_base_path, f"consolidated.{i:02d}.pth"),
+                map_location="cpu",
+            )
             for i in range(num_shards)
         ]
     param_count = 0
@@ -147,13 +168,27 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
                 f"model.layers.{layer_i}.self_attn.k_proj.weight": permute(
                     loaded[f"layers.{layer_i}.attention.wk.weight"]
                 ),
-                f"model.layers.{layer_i}.self_attn.v_proj.weight": loaded[f"layers.{layer_i}.attention.wv.weight"],
-                f"model.layers.{layer_i}.self_attn.o_proj.weight": loaded[f"layers.{layer_i}.attention.wo.weight"],
-                f"model.layers.{layer_i}.mlp.gate_proj.weight": loaded[f"layers.{layer_i}.feed_forward.w1.weight"],
-                f"model.layers.{layer_i}.mlp.down_proj.weight": loaded[f"layers.{layer_i}.feed_forward.w2.weight"],
-                f"model.layers.{layer_i}.mlp.up_proj.weight": loaded[f"layers.{layer_i}.feed_forward.w3.weight"],
-                f"model.layers.{layer_i}.input_layernorm.weight": loaded[f"layers.{layer_i}.attention_norm.weight"],
-                f"model.layers.{layer_i}.post_attention_layernorm.weight": loaded[f"layers.{layer_i}.ffn_norm.weight"],
+                f"model.layers.{layer_i}.self_attn.v_proj.weight": loaded[
+                    f"layers.{layer_i}.attention.wv.weight"
+                ],
+                f"model.layers.{layer_i}.self_attn.o_proj.weight": loaded[
+                    f"layers.{layer_i}.attention.wo.weight"
+                ],
+                f"model.layers.{layer_i}.mlp.gate_proj.weight": loaded[
+                    f"layers.{layer_i}.feed_forward.w1.weight"
+                ],
+                f"model.layers.{layer_i}.mlp.down_proj.weight": loaded[
+                    f"layers.{layer_i}.feed_forward.w2.weight"
+                ],
+                f"model.layers.{layer_i}.mlp.up_proj.weight": loaded[
+                    f"layers.{layer_i}.feed_forward.w3.weight"
+                ],
+                f"model.layers.{layer_i}.input_layernorm.weight": loaded[
+                    f"layers.{layer_i}.attention_norm.weight"
+                ],
+                f"model.layers.{layer_i}.post_attention_layernorm.weight": loaded[
+                    f"layers.{layer_i}.ffn_norm.weight"
+                ],
             }
         else:
             # Sharded
@@ -172,7 +207,9 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
             state_dict[f"model.layers.{layer_i}.self_attn.q_proj.weight"] = permute(
                 torch.cat(
                     [
-                        loaded[i][f"layers.{layer_i}.attention.wq.weight"].view(n_heads_per_shard, dims_per_head, dim)
+                        loaded[i][f"layers.{layer_i}.attention.wq.weight"].view(
+                            n_heads_per_shard, dims_per_head, dim
+                        )
                         for i in range(num_shards)
                     ],
                     dim=0,
@@ -203,16 +240,32 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
             ).reshape(key_value_dim, dim)
 
             state_dict[f"model.layers.{layer_i}.self_attn.o_proj.weight"] = torch.cat(
-                [loaded[i][f"layers.{layer_i}.attention.wo.weight"] for i in range(num_shards)], dim=1
+                [
+                    loaded[i][f"layers.{layer_i}.attention.wo.weight"]
+                    for i in range(num_shards)
+                ],
+                dim=1,
             )
             state_dict[f"model.layers.{layer_i}.mlp.gate_proj.weight"] = torch.cat(
-                [loaded[i][f"layers.{layer_i}.feed_forward.w1.weight"] for i in range(num_shards)], dim=0
+                [
+                    loaded[i][f"layers.{layer_i}.feed_forward.w1.weight"]
+                    for i in range(num_shards)
+                ],
+                dim=0,
             )
             state_dict[f"model.layers.{layer_i}.mlp.down_proj.weight"] = torch.cat(
-                [loaded[i][f"layers.{layer_i}.feed_forward.w2.weight"] for i in range(num_shards)], dim=1
+                [
+                    loaded[i][f"layers.{layer_i}.feed_forward.w2.weight"]
+                    for i in range(num_shards)
+                ],
+                dim=1,
             )
             state_dict[f"model.layers.{layer_i}.mlp.up_proj.weight"] = torch.cat(
-                [loaded[i][f"layers.{layer_i}.feed_forward.w3.weight"] for i in range(num_shards)], dim=0
+                [
+                    loaded[i][f"layers.{layer_i}.feed_forward.w3.weight"]
+                    for i in range(num_shards)
+                ],
+                dim=0,
             )
 
         state_dict[f"model.layers.{layer_i}.self_attn.rotary_emb.inv_freq"] = inv_freq
@@ -235,7 +288,9 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
             "model.embed_tokens.weight": torch.cat(
                 [loaded[i]["tok_embeddings.weight"] for i in range(num_shards)], dim=1
             ),
-            "lm_head.weight": torch.cat([loaded[i]["output.weight"] for i in range(num_shards)], dim=0),
+            "lm_head.weight": torch.cat(
+                [loaded[i]["output.weight"] for i in range(num_shards)], dim=0
+            ),
         }
 
     for k, v in state_dict.items():
@@ -246,11 +301,15 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
     # Write configs
     index_dict["metadata"] = {"total_size": param_count * 2}
     write_json(index_dict, os.path.join(tmp_model_path, "pytorch_model.bin.index.json"))
-    ffn_dim_multiplier = params["ffn_dim_multiplier"] if "ffn_dim_multiplier" in params else 1
+    ffn_dim_multiplier = (
+        params["ffn_dim_multiplier"] if "ffn_dim_multiplier" in params else 1
+    )
     multiple_of = params["multiple_of"] if "multiple_of" in params else 256
     config = LlamaConfig(
         hidden_size=dim,
-        intermediate_size=compute_intermediate_size(dim, ffn_dim_multiplier, multiple_of),
+        intermediate_size=compute_intermediate_size(
+            dim, ffn_dim_multiplier, multiple_of
+        ),
         num_attention_heads=params["n_heads"],
         num_hidden_layers=params["n_layers"],
         rms_norm_eps=params["norm_eps"],
@@ -267,7 +326,9 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
     gc.collect()
 
     print("Loading the checkpoint in a Llama model.")
-    model = LlamaForCausalLM.from_pretrained(tmp_model_path, torch_dtype=torch.bfloat16, low_cpu_mem_usage=True)
+    model = LlamaForCausalLM.from_pretrained(
+        tmp_model_path, torch_dtype=torch.bfloat16, low_cpu_mem_usage=True
+    )
     # Avoid saving this as part of the config.
     del model.config._name_or_path
     model.config.torch_dtype = torch.float16
@@ -278,7 +339,9 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
 
 def write_tokenizer(tokenizer_path, input_tokenizer_path):
     # Initialize the tokenizer based on the `spm` model
-    tokenizer_class = LlamaTokenizer if LlamaTokenizerFast is None else LlamaTokenizerFast
+    tokenizer_class = (
+        LlamaTokenizer if LlamaTokenizerFast is None else LlamaTokenizerFast
+    )
     print(f"Saving a {tokenizer_class.__name__} to {tokenizer_path}.")
     tokenizer = tokenizer_class(input_tokenizer_path)
     tokenizer.save_pretrained(tokenizer_path)
@@ -292,14 +355,29 @@ def main():
     )
     parser.add_argument(
         "--model_size",
-        choices=["7B", "7Bf", "13B", "13Bf", "30B", "34B", "65B", "70B", "70Bf", "tokenizer_only"],
+        choices=[
+            "7B",
+            "7Bf",
+            "13B",
+            "13Bf",
+            "30B",
+            "34B",
+            "65B",
+            "70B",
+            "70Bf",
+            "tokenizer_only",
+        ],
         help="'f' models correspond to the finetuned versions, and are specific to the Llama2 official release. For more details on Llama2, checkout the original repo: https://huggingface.co/meta-llama",
     )
     parser.add_argument(
         "--output_dir",
         help="Location to write HF model and tokenizer",
     )
-    parser.add_argument("--safe_serialization", type=bool, help="Whether or not to save using `safetensors`.")
+    parser.add_argument(
+        "--safe_serialization",
+        type=bool,
+        help="Whether or not to save using `safetensors`.",
+    )
     args = parser.parse_args()
     spm_path = os.path.join(args.input_dir, "tokenizer.model")
     if args.model_size != "tokenizer_only":
