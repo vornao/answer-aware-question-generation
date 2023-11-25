@@ -1,8 +1,8 @@
 """Train T5 model on a given dataset, for answer aware question generation task. (Basically a sequence to sequence task)"""
 
 import os
-
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
+
 import gc
 import argparse
 
@@ -12,6 +12,7 @@ import transformers
 from transformers import Trainer
 from peft import LoraConfig, TaskType, get_peft_model
 import torch
+import accelerate
 
 DEEPSPEED_CONFIG = (
     "/storagenfs/l.miglior/answer-aware-question-generation/configs/t5deepspeed.json"
@@ -77,8 +78,8 @@ print("-" * 9 + "END CONFIGURATION" + "-" * 9)
 training_args = transformers.TrainingArguments(
     output_dir=checkpoint_dir,  # output directory
     num_train_epochs=EPOCHS,  # total number of training epochs
-    per_device_train_batch_size=32,  # batch size per device during training
-    per_device_eval_batch_size=32,  # batch size for evaluation
+    per_device_train_batch_size=BATCH_SIZE,  # batch size per device during training
+    per_device_eval_batch_size=BATCH_SIZE,  # batch size for evaluation
     warmup_steps=128,  # number of warmup steps for learning rate scheduler
     weight_decay=0.01,  # stderength of weight decay
     logging_dir=log_dir,  # directory for storing logs
@@ -105,8 +106,7 @@ peft_config = LoraConfig(
 # Load Models from pretrained
 tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
 model = transformers.T5ForConditionalGeneration.from_pretrained(
-    model_name, load_in_4bit=True, low_cpu_mem_usage=True, device_map="auto"
-)
+    model_name, load_in_4bit=True, low_cpu_mem_usage=True, torch_dtype=torch.float16)
 model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
 gc.collect()
@@ -138,30 +138,22 @@ def get_inputs_target(e):
         "target": f'{TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION}',
     }
 
-
-# set torch not to use 0th GPU. use only 1st, 2nd, 3rd, GPU.
 def preprocess_squad_dataset(dataset_name="squad", split="train"):
     dataset = datasets.load_dataset(dataset_name, split=split)
-    # Add question, answer and context tokens to dataset in a new column named text
-    dataset = dataset.map(
-        lambda e: {
-            # answer + context
-            "inputs": f'generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT}',
-            # question
-            "target": f'{TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION}',
-        },
-        num_proc=NPROC,
-    )
-
-    # Remove unnecessary columns, leaving only the formatted_text column
+    dataset = dataset.map(get_inputs_target, num_proc=NPROC)
     dataset = dataset.remove_columns(["answers", "context", "question"])
     return dataset
-
 
 # load dataset
 dataset = preprocess_squad_dataset(dataset_name="squad", split="train")
 valid_dataset = preprocess_squad_dataset(dataset_name="squad", split="validation")
 train, validation = dataset, valid_dataset
+
+# print an example of the dataset
+print("-" * 10 + "EXAMPLE" + "-" * 10)
+print(f"> Input: {train[0]['inputs']}")
+print(f"> Target: {train[0]['target']}")
+print("-" * 9 + "END EXAMPLE" + "-" * 9)
 
 
 # create a tokenizer function
