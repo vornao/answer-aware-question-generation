@@ -9,10 +9,14 @@ import argparse
 # set torch not to use 0th GPU. use only 1st, 2nd, 3rd, GPU.
 import datasets
 import transformers
-from transformers import Trainer
+from transformers import Trainer, BitsAndBytesConfig
 from peft import LoraConfig, TaskType, get_peft_model
 import torch
-import accelerate
+
+
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+)
 
 DEEPSPEED_CONFIG = (
     "/storagenfs/l.miglior/answer-aware-question-generation/configs/t5deepspeed.json"
@@ -39,6 +43,7 @@ parser.add_argument("--epochs", type=int, default=8)
 parser.add_argument("--lora_alpha", type=int, default=64)
 parser.add_argument("--lora_dropout", type=float, default=0.05)
 parser.add_argument("--lora_r", type=int, default=32)
+parser.add_argument("--ds", type=bool, default=False)
 
 args = parser.parse_args()
 
@@ -84,13 +89,13 @@ training_args = transformers.TrainingArguments(
     weight_decay=0.01,  # stderength of weight decay
     logging_dir=log_dir,  # directory for storing logs
     do_eval=True,  # do evaluation
-    fp16=True,  # use mixed precision trainin
     report_to="tensorboard",
     logging_steps=10,
     eval_steps=200,
     evaluation_strategy="steps",
-    optim="adamw_8bit",
     learning_rate=1e-4,
+    fp16=False,
+    fp16_full_eval=False,
     save_strategy="epoch",
 )
 
@@ -105,8 +110,13 @@ peft_config = LoraConfig(
 
 # Load Models from pretrained
 tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
-model = transformers.T5ForConditionalGeneration.from_pretrained(
-    model_name, load_in_4bit=True, low_cpu_mem_usage=True, torch_dtype=torch.float16)
+
+if not args.ds:
+    model = transformers.AutoModelForSeq2SeqLM.from_pretrained(
+        model_name, torch_dtype='auto')
+else:
+    model = transformers.AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
 model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
 gc.collect()
@@ -148,12 +158,6 @@ def preprocess_squad_dataset(dataset_name="squad", split="train"):
 dataset = preprocess_squad_dataset(dataset_name="squad", split="train")
 valid_dataset = preprocess_squad_dataset(dataset_name="squad", split="validation")
 train, validation = dataset, valid_dataset
-
-# print an example of the dataset
-print("-" * 10 + "EXAMPLE" + "-" * 10)
-print(f"> Input: {train[0]['inputs']}")
-print(f"> Target: {train[0]['target']}")
-print("-" * 9 + "END EXAMPLE" + "-" * 9)
 
 
 # create a tokenizer function
