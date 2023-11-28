@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2"
 
 import argparse
 import json
@@ -11,13 +11,13 @@ import evaluate
 from tqdm import tqdm
 import json
 import numpy as np
-from trl import PPOConfig, PPOTrainer
+from trl import PPOConfig, PPOTrainer, AutoModelForSeq2SeqLMWithValueHead
 
 """
 Train fine tuned T5 model with Proximal Policy Optimization (PPO) algorithm.
 """
 parser = argparse.ArgumentParser()
-parser.add_argument("--model_name", type=str, default="t5-base")
+parser.add_argument("--model_name", type=str, default="t5-small")
 parser.add_argument("--highlight", type=bool, default=True)
 
 args = parser.parse_args()
@@ -39,7 +39,7 @@ NPROC = 32
 
 
 
-def reward_function(prediction, example):
+def reward_model(prediction, example):
     """
     this function will return a reward function for PPO
     """
@@ -108,8 +108,6 @@ def preprocess_squad_dataset(dataset_name="squad", split="train"):
 # Need to have training dataset aligned with PPO input format
 
 train_dataset = preprocess_squad_dataset(dataset_name="squad", split="train") 
-train_dataset = train_dataset["query"]
-
 
 HIGHLIGHT = args.highlight
 model_name = args.model_name
@@ -118,7 +116,7 @@ if HIGHLIGHT:
     model_name = f"{model_name}-hl"
 
 
-model = transformers.T5ForConditionalGeneration.from_pretrained(
+lmodel = AutoModelForSeq2SeqLMWithValueHead.from_pretrained(
     f"./models/{model_name}/", device_map="auto"
 )
 
@@ -133,15 +131,16 @@ def tokenize(sample):
 train_dataset = train_dataset.map(tokenize, batched=False, num_proc=NPROC)
 
 config = PPOConfig(
-    learning_rate=1e5,
-    log_with='tensorboard'
-)
+    learning_rate=1e-5,
+    log_with='tensorboard',
+    project_kwargs={'logging_dir': f'./logs/{model_name}'},
 
+)
 
 ppo_trainer = PPOTrainer(
     model=model,
     config=config,
-    train_dataset=train_dataset,
+    dataset=train_dataset,
     tokenizer=tokenizer,
 )
 
@@ -156,7 +155,22 @@ generation_kwargs = {
 
 # Training loop
 
+for epoch, batch in tqdm(enumerate(ppo_trainer.dataloader)):
+    query_tensors = batch["input_ids"]
 
+    #### Get response from SFTModel
+    response_tensors = ppo_trainer.generate(query_tensors, **generation_kwargs)
+    batch["prediction"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
+    
+    pipe_outputs = reward_model(*zip(batch["query"], batch["prediction"]))
+    rewards = [torch.tensor(output[1]["score"]) for output in pipe_outputs]
+
+    #### Run PPO step
+    stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
+    ppo_trainer.log_stats(stats, batch, rewards)
+
+
+"""
 for epoch, batch in tqdm(enumerate(ppo_trainer.train_dataset)):
     query_tensors = batch["input_ids"]
 
@@ -177,3 +191,4 @@ for epoch, batch in tqdm(enumerate(ppo_trainer.train_dataset)):
     #### Run PPO step
     stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
     ppo_trainer.log_stats(stats, batch, rewards)
+"""
