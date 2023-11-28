@@ -23,7 +23,7 @@ parser.add_argument("--highlight", type=bool, default=True)
 args = parser.parse_args()
 
 
-bertscore = evaluate.load_metric("bertscore")
+bertscore = evaluate.load("bertscore")
 average_question_length = 10.0
 
 HIGHLIGHT = True
@@ -105,6 +105,11 @@ def preprocess_squad_dataset(dataset_name="squad", split="train"):
 
     return dataset
 
+# Need to have training dataset aligned with PPO input format
+
+train_dataset = preprocess_squad_dataset(dataset_name="squad", split="train") 
+train_dataset = train_dataset["query"]
+
 
 HIGHLIGHT = args.highlight
 model_name = args.model_name
@@ -124,6 +129,8 @@ def tokenize(sample):
     sample["input_ids"] = tokenizer.encode(sample["query"])
     return sample
 
+# Tokenize the dataset
+train_dataset = train_dataset.map(tokenize, batched=False, num_proc=NPROC)
 
 config = PPOConfig(
     learning_rate=1e5,
@@ -137,3 +144,36 @@ ppo_trainer = PPOTrainer(
     train_dataset=train_dataset,
     tokenizer=tokenizer,
 )
+
+# https://huggingface.co/docs/trl/main/en/how_to_train#how-to-generate-text-for-training
+generation_kwargs = {
+    "min_length": -1,
+    "top_k": 0.0,
+    "top_p": 1.0,
+    "do_sample": True,
+    "pad_token_id": tokenizer.eos_token_id,
+}
+
+# Training loop
+
+
+for epoch, batch in tqdm(enumerate(ppo_trainer.train_dataset)):
+    query_tensors = batch["input_ids"]
+
+    #### Get response from gpt2
+    response_tensors = []
+    for query in query_tensors:
+        gen_len = output_length_sampler()
+        generation_kwargs["max_new_tokens"] = gen_len
+        response = ppo_trainer.generate(query, **generation_kwargs)
+        response_tensors.append(response.squeeze()[-gen_len:])
+    batch["response"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
+
+    #### Compute sentiment score
+    texts = [q + r for q, r in zip(batch["query"], batch["response"])]
+    pipe_outputs = sentiment_pipe(texts, **sent_kwargs)
+    rewards = [torch.tensor(output[1]["score"]) for output in pipe_outputs]
+
+    #### Run PPO step
+    stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
+    ppo_trainer.log_stats(stats, batch, rewards)
