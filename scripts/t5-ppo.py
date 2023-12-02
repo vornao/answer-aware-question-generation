@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2"
 
@@ -12,15 +18,16 @@ from tqdm import tqdm
 import json
 import numpy as np
 from trl import PPOConfig, PPOTrainer, AutoModelForSeq2SeqLMWithValueHead
+from peft import LoraConfig, TaskType, get_peft_model, PeftModelForSeq2SeqLM, PeftModel
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 """
 Train fine tuned T5 model with Proximal Policy Optimization (PPO) algorithm.
 """
 parser = argparse.ArgumentParser()
-parser.add_argument("--model_name", type=str, default="t5-small")
-parser.add_argument("--highlight", type=bool, default=True)
-
-args = parser.parse_args()
+#parser.add_argument("--model_name", type=str, default="t5-small")
+#parser.add_argument("--highlight", type=bool, default=True)
+#args = parser.parse_args()
 
 
 bertscore = evaluate.load("bertscore")
@@ -37,31 +44,39 @@ HIGHLIGHT_ANSWER = "<hl>"
 SPLIT_SEED = 42
 NPROC = 32
 
+model_name = "t5-base"
+HIGHLIGHT = True
+if HIGHLIGHT:
+    model_name = f"{model_name}-hl"
 
 
-def reward_model(prediction, example):
-    """
-    this function will return a reward function for PPO
-    """
+# In[3]:
 
-    context = example["context"]
-    question = example["question"]
-    answer = example["answers"]["text"][0]
 
-    reward = bertscore.compute(
-        predictions=[prediction],
-        references=[question],
-        lang="en",
-        model_type="bert-base-uncased",
-    )["f1"].item()
+peft_config = LoraConfig(
+    r=128,
+    lora_alpha=64,
+    lora_dropout=0.1,
+    target_modules=["q", "v"],
+)
 
-    repetition_penalty = -1.0 if answer.lower() in prediction.lower() else 1.0
-    question_word_penalty = -0.5 if question.split()[0].lower() != prediction.split()[0].lower() else 0.5
-    ans_in_question_penalty = -1.0 if answer.lower() in question.lower() else 1.0
-    question_length_penalty = -0.5 if len(question.split()) > average_question_length else 0.5
 
-    reward += repetition_penalty + question_word_penalty + ans_in_question_penalty + question_length_penalty
-    return reward
+#model = AutoModelForSeq2SeqLM.from_pretrained(f"./models/{model_name}/", device_map="auto")
+#peft_model = PeftModelForSeq2SeqLM.from_pretrained(model, model_id=f"./models/{model_name}/", config=peft_config, device_map='auto', is_trainable=True)
+
+ppo_model = AutoModelForSeq2SeqLMWithValueHead.from_pretrained(f"./models/{model_name}/", device_map="cuda:0")
+ref_model = AutoModelForSeq2SeqLMWithValueHead.from_pretrained(f"./models/{model_name}/", device_map="cuda:0")
+tokenizer = transformers.AutoTokenizer.from_pretrained(f"./models/{model_name}", model_max_length=512)
+torch.cuda.empty_cache()
+
+
+# In[4]:
+
+
+tokenize_query = lambda e : tokenizer(e["query"], return_tensors='pt', padding=True, truncation=True).input_ids.squeeze().to('cuda:0')
+
+def tokenize_query(e):
+    return tokenizer(e["query"], return_tensors='pt', padding=True, truncation=True).input_ids.squeeze().to('cuda:0')
 
 def get_inputs_target(e):
     answer_start = e["answers"]["answer_start"][0]
@@ -81,114 +96,134 @@ def get_inputs_target(e):
             + e["context"][answer_start + ans_len :]
         )
 
+    e['query'] = e.pop('context')
+
     return {
         # answer + context
-        "inputs": f'generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT}',
+        "query": f'generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["query"]} {TOKEN_END_CONTEXT}',
         # question
         "target": f'{TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION}',
+        "answer": e["answers"]["text"][0],
     }
 
 
 def preprocess_squad_dataset(dataset_name="squad", split="train"):
-    dataset = datasets.load_dataset(dataset_name, split=split)
+    dataset = datasets.load_dataset(dataset_name, split=split).shuffle(42).select(range(10000))  
     # Add question, answer and context tokens to dataset in a new column named text
     dataset = dataset.map(
-        lambda e: {
-            # answer + context
-            # changed to 'query' for PPO
-            "query": f'generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT}',
-            # question
-            "target": f'{TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION}',
-        },
-        num_proc=NPROC,
+        get_inputs_target,
+        num_proc=16
     )
-
     return dataset
 
 # Need to have training dataset aligned with PPO input format
 
 train_dataset = preprocess_squad_dataset(dataset_name="squad", split="train") 
 
-HIGHLIGHT = args.highlight
-model_name = args.model_name
 
-if HIGHLIGHT:
-    model_name = f"{model_name}-hl"
+# In[5]:
 
 
-lmodel = AutoModelForSeq2SeqLMWithValueHead.from_pretrained(
-    f"./models/{model_name}/", device_map="auto"
-)
+def preprocess_prediction(example):
+    """
+    this function will preprocess the prediction
+    """
+    return example.replace("<pad>", "").replace("<unk>", "").replace("</s>", "").replace("question>", "").replace("<question>", "").replace('<', "").strip()
 
-tokenizer = transformers.AutoTokenizer.from_pretrained(f"./models/{model_name}")
-torch.cuda.empty_cache()
+def reward_model(example):
+    """
+    this function will return a reward function for PPO
+    """
+    try:
+        context = example["query"]
+        target = example["target"]
+        answer = example["answer"]
+        prediction = example["prediction"]
+        prediction = [preprocess_prediction(pred) for pred in prediction] if isinstance(prediction, list) else preprocess_prediction(prediction)
+        
 
-def tokenize(sample):
-    sample["input_ids"] = tokenizer.encode(sample["query"])
-    return sample
+        if isinstance(target, list):
+            target = [preprocess_prediction(ans) for ans in answer]
+        else:
+            target = preprocess_prediction(target)
 
-# Tokenize the dataset
-train_dataset = train_dataset.map(tokenize, batched=False, num_proc=NPROC)
+        reward = bertscore.compute(
+            predictions=[prediction] if isinstance(prediction, str) else prediction,
+            references=[target] if isinstance(target, str) else target,
+            lang="en",
+            model_type="bert-base-uncased",
+        )["f1"][0]
 
+        prediction = prediction[0] if isinstance(prediction, list) else prediction
+        target = target[0] if isinstance(target, list) else target
+        
+
+        repetition_penalty = -5.0 if answer.lower() in prediction.lower() else 1.0
+        question_word_penalty = -0.5 if target.split()[0].lower() != prediction.split()[0].lower() else 0.5
+        question_length_penalty = -0.5 if len(target.split()) > 20 else 0.5
+
+        reward = reward + (repetition_penalty + question_word_penalty  + question_length_penalty)
+        # make it between 0 and 1
+        reward = torch.nn.Sigmoid()(torch.tensor(reward))
+        print(f"> Ans: {answer}, Q: {prediction}, P: {target}, R: {reward}")
+        return reward
+
+    except Exception as e:
+        print("WARNING", e)
+        return torch.tensor(0.0)
+
+
+# In[6]:
+
+
+BATCH_SIZE = 16
 config = PPOConfig(
     learning_rate=1e-5,
     log_with='tensorboard',
-    project_kwargs={'logging_dir': f'./logs/{model_name}'},
-
+    project_kwargs={'logging_dir': f'./logs/{model_name}-ppo'},
+    batch_size=BATCH_SIZE,
 )
 
 ppo_trainer = PPOTrainer(
-    model=model,
+    model=ppo_model,
+    ref_model=ref_model,
     config=config,
-    dataset=train_dataset,
     tokenizer=tokenizer,
 )
 
-# https://huggingface.co/docs/trl/main/en/how_to_train#how-to-generate-text-for-training
-generation_kwargs = {
-    "min_length": -1,
-    "top_k": 0.0,
-    "top_p": 1.0,
-    "do_sample": True,
-    "pad_token_id": tokenizer.eos_token_id,
-}
 
-# Training loop
+batched_dataset = [[train_dataset[i] for i in range(j, min(j+BATCH_SIZE, len(train_dataset)))] for j in range(0, len(train_dataset), BATCH_SIZE)]
+# remove last batch if it is not full
+if len(batched_dataset[-1]) != BATCH_SIZE:
+    batched_dataset.pop(-1)
 
-for epoch, batch in tqdm(enumerate(ppo_trainer.dataloader)):
-    query_tensors = batch["input_ids"]
+for batch in tqdm(batched_dataset):
+    query_tensors = [tokenizer(e["query"], return_tensors='pt', padding=True, truncation=True).input_ids.squeeze().to('cuda:0') for e in batch]
 
-    #### Get response from SFTModel
-    response_tensors = ppo_trainer.generate(query_tensors, **generation_kwargs)
-    batch["prediction"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
+    response_tensors = ppo_trainer.generate(query_tensors, max_length=32, early_stopping=True)
+
+    # put response_tensors into batch
+    for i in range(len(batch)):
+        batch[i]["prediction"] = tokenizer.decode(response_tensors[i], skip_special_tokens=True)
+
+    pipe_outputs = [reward_model(e) for e in batch] 
+    rewards = pipe_outputs
+
+    stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
     
-    pipe_outputs = reward_model(*zip(batch["query"], batch["prediction"]))
-    rewards = [torch.tensor(output[1]["score"]) for output in pipe_outputs]
+    
+    print(f'objective/kl: {stats["objective/kl"]}')
+    print(f'ppo/returns/mean: {stats["ppo/returns/mean"]}')
+    print(f'ppo/policy/advantages_mean: {stats["ppo/policy/advantages_mean"]}')
 
-    #### Run PPO step
-    stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
-    ppo_trainer.log_stats(stats, batch, rewards)
+    print('-'.join('' for x in range(100)))
+
+# save model
+ppo_trainer.save_pretrained(f"./models/{model_name}-ppo/")
 
 
-"""
-for epoch, batch in tqdm(enumerate(ppo_trainer.train_dataset)):
-    query_tensors = batch["input_ids"]
+# In[ ]:
 
-    #### Get response from gpt2
-    response_tensors = []
-    for query in query_tensors:
-        gen_len = output_length_sampler()
-        generation_kwargs["max_new_tokens"] = gen_len
-        response = ppo_trainer.generate(query, **generation_kwargs)
-        response_tensors.append(response.squeeze()[-gen_len:])
-    batch["response"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
 
-    #### Compute sentiment score
-    texts = [q + r for q, r in zip(batch["query"], batch["response"])]
-    pipe_outputs = sentiment_pipe(texts, **sent_kwargs)
-    rewards = [torch.tensor(output[1]["score"]) for output in pipe_outputs]
+# save model 
 
-    #### Run PPO step
-    stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
-    ppo_trainer.log_stats(stats, batch, rewards)
-"""
