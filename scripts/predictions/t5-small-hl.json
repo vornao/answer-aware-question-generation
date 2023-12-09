@@ -1,0 +1,602 @@
+[
+    {
+        "context": "Whilst this is the consensus viewpoint amongst the majority of academics, some teachers and parents advocate a more assertive and confrontational style of discipline.[citation needed] Such individuals claim that many problems with modern schooling stem from the  <hl> weakness in school discipline <hl>  and if teachers exercised firm control over the classroom they would be able to teach more efficiently. This viewpoint is supported by the educational attainment of countries\u2014in East Asia for instance\u2014that combine strict discipline with high standards of education.[citation needed]",
+        "answer": "weakness in school discipline",
+        "question": "What do critics think the cause of problems with modern schooling is?",
+        "prediction": " What causes many problems with modern schooling? "
+    },
+    {
+        "context": "Perhaps the most significant difference between primary school and secondary school teaching is  <hl> the relationship between teachers and children <hl> . In primary schools each class has a teacher who stays with them for most of the week and will teach them the whole curriculum. In secondary schools they will be taught by different subject specialists each session during the week and may have ten or more different teachers. The relationship between children and their teachers tends to be closer in the primary school where they act as form tutor, specialist teacher and surrogate parent during the course of the day.",
+        "answer": "the relationship between teachers and children",
+        "question": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+        "prediction": " What is perhaps the most significant difference between primary school and secondary school teaching? "
+    },
+    {
+        "context": "Before the actual research explicitly devoted to the complexity of algorithmic problems started off, numerous foundations were laid out by various researchers. Most influential among these was the definition of Turing machines by  <hl> Alan Turing <hl>  in 1936, which turned out to be a very robust and flexible simplification of a computer.",
+        "answer": "Alan Turing",
+        "question": "Who was the most influential researcher among those grappling with the deficit of work surrounding the complexity posed by algorithmic problems?",
+        "prediction": " Who defined Turing machines? "
+    },
+    {
+        "context": "In education, teachers facilitate student learning, often in a school or  <hl> academy <hl>  or perhaps in another environment such as outdoors. A teacher who teaches on an individual basis may be described as a tutor.",
+        "answer": "academy",
+        "question": "Where is another indoor location for a teacher other than a school?",
+        "prediction": " What type of academy does teachers facilitate student learning? "
+    },
+    {
+        "context": "The legendary religious zeal of the Normans was exercised in religious wars long before the First Crusade carved out a Norman principality in Antioch. They were major foreign participants in the Reconquista in Iberia. In  <hl> 1018 <hl> , Roger de Tosny travelled to the Iberian Peninsula to carve out a state for himself from Moorish lands, but failed. In 1064, during the War of Barbastro, William of Montreuil led the papal army and took a huge booty.",
+        "answer": "1018",
+        "question": "What year did Roger de Tosny fail to accomplish what he set out to do?",
+        "prediction": " In what year did Roger de Tosny travel to the Iberian Peninsula? "
+    },
+    {
+        "context": "Near the end of his life, Tesla walked to the park every day to feed the pigeons and even brought injured ones into his  <hl> hotel room <hl>  to nurse back to health. He said that he had been visited by a specific injured white pigeon daily. Tesla spent over $2,000, including building a device that comfortably supported her so her bones could heal, to fix her broken wing and leg. Tesla stated,",
+        "answer": "hotel room",
+        "question": "To what place did he bring the injured pigeons to take care of them?",
+        "prediction": " What did Tesla say Tesla brought injured pigeons into? "
+    },
+    {
+        "context": "What intractability means in practice is open to debate. Saying that a problem is not in P does not imply that all large cases of the problem are hard or even that most of them are. For example, the decision problem in Presburger arithmetic has been shown not to be in P, yet algorithms have been written that solve the problem in reasonable times in most cases. Similarly, algorithms can solve the NP-complete knapsack problem over a wide range of sizes  <hl> in less than quadratic time <hl>  and SAT solvers routinely handle large instances of the NP-complete Boolean satisfiability problem.",
+        "answer": "in less than quadratic time",
+        "question": "How quickly can an algorithm solve an NP-complete knapsack problem?",
+        "prediction": " How can algorithms solve the NP-complete knapsack problem? "
+    },
+    {
+        "context": "In December 1878, Tesla left Graz and severed all relations with his family to hide the fact that he dropped out of school. His friends thought that he had drowned in the Mur River. Tesla went to Maribor (now in Slovenia), where he worked as  <hl> a draftsman <hl>  for 60 florins a month. He spent his spare time playing cards with local men on the streets. In March 1879, Milutin Tesla went to Maribor to beg his son to return home, but Nikola refused. Nikola suffered a nervous breakdown at around the same time.",
+        "answer": "a draftsman",
+        "question": "What did Tesla work as after dropping out? ",
+        "prediction": " What did Tesla work as in Maribor? "
+    },
+    {
+        "context": "Bethencourt took the title of King of the Canary Islands, as vassal to Henry III of Castile. In 1418, Jean's nephew Maciot de Bethencourt sold the rights to the islands to  <hl> Enrique P\u00e9rez de Guzm\u00e1n <hl> , 2nd Count de Niebla.",
+        "answer": "Enrique P\u00e9rez de Guzm\u00e1n",
+        "question": "Who bought the rights?",
+        "prediction": " Who sold the rights to the islands to? "
+    },
+    {
+        "context": "This motivates the concept of a problem being hard for a complexity class. A problem X is hard for a class of problems C  <hl> if every problem in C can be reduced to X <hl> . Thus no problem in C is harder than X, since an algorithm for X allows us to solve any problem in C. Of course, the notion of hard problems depends on the type of reduction being used. For complexity classes larger than P, polynomial-time reductions are commonly used. In particular, the set of problems that are hard for NP is the set of NP-hard problems.",
+        "answer": "if every problem in C can be reduced to X",
+        "question": "What would create a conflict between a problem X and problem C within the context of reduction? ",
+        "prediction": " What is a problem X hard for a class of problems C? "
+    },
+    {
+        "context": "Tesla could be harsh at times and openly expressed disgust for overweight people, such as when he fired a  <hl> secretary <hl>  because of her weight.:110 He was quick to criticize clothing; on several occasions, Tesla directed a subordinate to go home and change her dress.:33",
+        "answer": "secretary",
+        "question": "Who did he fire?",
+        "prediction": " What did Tesla fire because of her weight? "
+    },
+    {
+        "context": "A modern example of school discipline in North America and Western Europe relies upon the idea of an assertive teacher who is prepared to impose their will upon a class. Positive reinforcement is balanced with  <hl> immediate and fair punishment for misbehavior <hl>  and firm, clear boundaries define what is appropriate and inappropriate behavior. Teachers are expected to respect their students; sarcasm and attempts to humiliate pupils are seen as falling outside of what constitutes reasonable discipline.[verification needed]",
+        "answer": "immediate and fair punishment for misbehavior",
+        "question": "What is the balance for positive reinforcement?",
+        "prediction": " Positive reinforcement is balanced with what? "
+    },
+    {
+        "context": "Tesla worked every day from 9:00 a.m. until 6:00 p.m. or later, with dinner from exactly  <hl> 8:10 p.m <hl> ., at Delmonico's restaurant and later the Waldorf-Astoria Hotel. Tesla would telephone his dinner order to the headwaiter, who also could be the only one to serve him. \"The meal was required to be ready at eight o'clock ... He dined alone, except on the rare occasions when he would give a dinner to a group to meet his social obligations. Tesla would then resume his work, often until 3:00 a.m.\":283, 286",
+        "answer": "8:10 p.m",
+        "question": "At what time did Tesla get dinner?",
+        "prediction": " When did Tesla work at Delmonico's restaurant? "
+    },
+    {
+        "context": "Since teachers can affect how students perceive the course materials, it has been found that teachers who showed  <hl> enthusiasm <hl>  towards the course materials and students can affect a positive learning experience towards the course materials. On teacher/course evaluations, it was found that teachers who have a positive disposition towards the course content tend to transfer their passion to receptive students. These teachers do not teach by rote but attempt to find new invigoration for the course materials on a daily basis. One of the difficulties in this approach is that teachers may have repeatedly covered a curriculum until they begin to feel bored with the subject which in turn bores the students as well. Students who had enthusiastic teachers tend to rate them higher than teachers who didn't show much enthusiasm for the course materials.",
+        "answer": "enthusiasm",
+        "question": "What must a teacher show towards the course materials for increase learning?",
+        "prediction": " What did teachers show towards the course materials? "
+    },
+    {
+        "context": "In 1881, Tesla moved to  <hl> Budapest <hl>  to work under Ferenc Pusk\u00e1s at a telegraph company, the Budapest Telephone Exchange. Upon arrival, Tesla realized that the company, then under construction, was not functional, so he worked as a draftsman in the Central Telegraph Office instead. Within a few months, the Budapest Telephone Exchange became functional and Tesla was allocated the chief electrician position. During his employment, Tesla made many improvements to the Central Station equipment and claimed to have perfected a telephone repeater or amplifier, which was never patented nor publicly described.",
+        "answer": "Budapest",
+        "question": "Where did Tesla move in 1881?",
+        "prediction": " Where did Tesla move to? "
+    },
+    {
+        "context": "Later in life, Tesla made claims concerning a \"teleforce\" weapon after studying the Van de Graaff generator. The press variably referred to it as a \"peace ray\" or death ray. Tesla described the weapon as capable of being used against ground-based  <hl> infantry <hl>  or for anti-aircraft purposes.",
+        "answer": "infantry",
+        "question": "What ground based group did Tesla think the weapon could be used on?",
+        "prediction": " Tesla described the weapon as capable of being used against ground-based "
+    },
+    {
+        "context": "On 17 May 1899, Tesla moved to Colorado Springs, where he would have room for his high-voltage, high-frequency experiments; his lab was located near Foote Ave. and Kiowa St. He chose this location because the polyphase alternating current power distribution system had been introduced there and he had associates who were willing to give him all the power he needed without charging for it. Upon his arrival, he told reporters that he was conducting wireless telegraphy experiments, transmitting signals from Pikes Peak to Paris.[citation needed] The 1978 book Colorado Springs Notes, 1899\u20131900 contains descriptions of Tesla's experiments. On  <hl> 15 June 1899 <hl> , Tesla performed his first experiments at his Colorado Springs lab; he recorded his initial spark length at five inches long, but very thick and noisy.",
+        "answer": "15 June 1899",
+        "question": "What date did Tesla begin his Colorado Springs experiments?",
+        "prediction": " When did Tesla perform his first experiments at his Colorado Springs lab? "
+    },
+    {
+        "context": "On 24 March 1879, Tesla was returned to Gospi\u0107 under police guard for not having a residence permit. On 17 April 1879, Milutin Tesla died at the age of 60 after contracting an unspecified illness (although some sources say that he died of a  <hl> stroke <hl> ). During that year, Tesla taught a large class of students in his old school, Higher Real Gymnasium, in Gospi\u0107.",
+        "answer": "stroke",
+        "question": "What was one of theories as to what caused Tesla's father's unspecified illness?",
+        "prediction": " What caused Milutin Tesla to die? "
+    },
+    {
+        "context": "Warsaw (Polish: Warszawa [var\u02c8\u0282ava] ( listen); see also other names) is the capital and largest city of Poland. It stands on the Vistula River in east-central Poland, roughly 260 kilometres (160 mi) from the Baltic Sea and 300 kilometres (190 mi) from the Carpathian Mountains. Its population is estimated at 1.740 million residents within a greater metropolitan area of  <hl> 2.666 million <hl>  residents, which makes Warsaw the 9th most-populous capital city in the European Union. The city limits cover 516.9 square kilometres (199.6 sq mi), while the metropolitan area covers 6,100.43 square kilometres (2,355.39 sq mi).",
+        "answer": "2.666 million",
+        "question": "How many residents does the greater metropolitan area have?",
+        "prediction": " How much is Warsaw the 9th most-populous capital city in the European Union? "
+    },
+    {
+        "context": "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in the 10th and 11th centuries gave their name to Normandy, a region in France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West Francia. Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the  <hl> 10th century <hl> , and it continued to evolve over the succeeding centuries.",
+        "answer": "10th century",
+        "question": "What century did the Normans first gain their separate identity?",
+        "prediction": " In what century did the distinct cultural and ethnic identity of the Normans emerge? "
+    },
+    {
+        "context": "Many known complexity classes are suspected to be unequal, but this has not been proved. For instance P \u2286 NP \u2286 PP \u2286 PSPACE, but it is possible that P = PSPACE. If P is not equal to NP, then P is not equal to PSPACE either. Since there are many known complexity classes  <hl> between P and PSPACE <hl> , such as RP, BPP, PP, BQP, MA, PH, etc., it is possible that all these complexity classes collapse to one class. Proving that any of these classes are unequal would be a major breakthrough in complexity theory.",
+        "answer": "between P and PSPACE",
+        "question": "Where can the complexity classes RP, BPP, PP, BQP, MA, and PH be located?",
+        "prediction": " What are many known complexity classes between P and PSPACE? "
+    },
+    {
+        "context": "Starting in 1894, Tesla began investigating what he referred to as radiant energy of \"invisible\" kinds after he had noticed damaged film in his laboratory in previous experiments (later identified as \"Roentgen rays\" or \"X-Rays\"). His early experiments were with Crookes tubes, a cold cathode electrical discharge tube. Soon after, much of Tesla's early research\u2014hundreds of invention models, plans, notes, laboratory data, tools, photographs, valued at $50,000\u2014was lost in the 5th Avenue laboratory fire of March 1895. Tesla is quoted by The New York Times as saying, \"I am in too much grief to talk. What can I say?\" Tesla may have inadvertently captured an X-ray image\u2014predating, by a few weeks, Wilhelm R\u00f6ntgen's December 1895 announcement of the discovery of x-rays\u2014when he tried to photograph  <hl> Mark Twain <hl>  illuminated by a Geissler tube, an earlier type of gas discharge tube. The only thing captured in the image was the metal locking screw on the camera lens.:134",
+        "answer": "Mark Twain",
+        "question": "Who was Tesla trying to photograph when he accidentally took the X-Ray image?",
+        "prediction": " What was a Geissler tube? "
+    },
+    {
+        "context": "Institutionally, the Normans combined the administrative machinery of the Byzantines, Arabs, and Lombards with their own conceptions of feudal law and order to forge a unique government. Under this state, there was great religious freedom, and alongside the Norman nobles existed a meritocratic bureaucracy of Jews, Muslims and Christians, both Catholic and Eastern Orthodox. The Kingdom of Sicily thus became characterized by Norman, Byzantine Greek, Arab, Lombard and \"native\" Sicilian populations living in harmony, and its Norman rulers fostered plans of establishing an Empire that would have encompassed Fatimid Egypt as well as the Crusader states in the Levant. One of the great geographical treatises of the Middle Ages, the \"Tabula Rogeriana\", was written by the Andalusian al-Idrisi for king Roger II of Sicily, and entitled \" <hl> Kitab Rudjdjar <hl> \" (\"The Book of Roger\").",
+        "answer": "Kitab Rudjdjar",
+        "question": "What is another name for the Tabula Rogeriana?",
+        "prediction": " What was the \"Tabula Rogeriana\"? "
+    },
+    {
+        "context": "During his second year of study at  <hl> Graz <hl> , Tesla developed a passion for (and became very proficient at) billiards, chess and card-playing, sometimes spending more than 48 hours in a stretch at a gaming table.:43, 301 On one occasion at his laboratory, Tesla worked for a period of 84 hours without sleep or rest.:208 Kenneth Swezey, a journalist whom Tesla had befriended, confirmed that Tesla rarely slept. Swezey recalled one morning when Tesla called him at 3 a.m.: \"I was sleeping in my room like one dead ... Suddenly, the telephone ring awakened me ... [Tesla] spoke animatedly, with pauses, [as he] ... work[ed] out a problem, comparing one theory to another, commenting; and when he felt he had arrived at the solution, he suddenly closed the telephone.\"",
+        "answer": "Graz",
+        "question": "Where was Tesla studying when he started playing cards and billiards?",
+        "prediction": " In his second year of study, Tesla developed a passion for billiards, chess and card-playing"
+    },
+    {
+        "context": "Other important complexity classes include BPP, ZPP and RP, which are defined using probabilistic Turing machines; AC and NC, which are defined using  <hl> Boolean <hl>  circuits; and BQP and QMA, which are defined using quantum Turing machines. #P is an important complexity class of counting problems (not decision problems). Classes like IP and AM are defined using Interactive proof systems. ALL is the class of all decision problems.",
+        "answer": "Boolean",
+        "question": "AC and NC are complexity classes typically associated with what type of circuit?",
+        "prediction": " What circuits are AC and NC defined using? "
+    },
+    {
+        "context": "Other green spaces in the city include the Botanic Garden and the University Library garden. They have extensive botanical collection of rare domestic and foreign plants, while a palm house in the New Orangery displays plants of subtropics from all over the world. Besides, within the city borders, there are also: Pole Mokotowskie (a big park in the northern Mokot\u00f3w, where was the first horse racetrack and then the airport),  <hl> Park Ujazdowski <hl>  (close to the Sejm and John Lennon street), Park of Culture and Rest in Powsin, by the southern city border, Park Skaryszewski by the right Vistula bank, in Praga. The oldest park in Praga, the Praga Park, was established in 1865\u20131871 and designed by Jan Dobrowolski. In 1927 a zoological garden (Ogr\u00f3d Zoologiczny) was established on the park grounds, and in 1952 a bear run, still open today.",
+        "answer": "Park Ujazdowski",
+        "question": "What park is close to John Lennon street?",
+        "prediction": " Which park is close to the Sejm and John Lennon street? "
+    },
+    {
+        "context": "For a precise definition of what it means to solve a problem using a given amount of  <hl> time <hl>  and space, a computational model such as the deterministic Turing machine is used. The time required by a deterministic Turing machine M on input x is the total number of state transitions, or steps, the machine makes before it halts and outputs the answer (\"yes\" or \"no\"). A Turing machine M is said to operate within time f(n), if the time required by M on each input of length n is at most f(n). A decision problem A can be solved in time f(n) if there exists a Turing machine operating in time f(n) that solves the problem. Since complexity theory is interested in classifying problems based on their difficulty, one defines sets of problems based on some criteria. For instance, the set of problems solvable within time f(n) on a deterministic Turing machine is then denoted by DTIME(f(n)).",
+        "answer": "time",
+        "question": "What is the most critical resource measured to in assessing the determination of a Turing machine's ability to solve any given set of problems?",
+        "prediction": " How much space does deterministic Turing machine use? "
+    },
+    {
+        "context": "The flora of the city may be considered very rich in species. The species richness is mainly due to the location of Warsaw within the border region of several big floral regions comprising substantial proportions of close-to-wilderness areas (natural forests, wetlands along the Vistula) as well as arable land, meadows and forests. Bielany Forest, located within the borders of Warsaw, is the remaining part of the Masovian Primeval Forest. Bielany Forest nature reserve is connected with Kampinos Forest. It is home to rich fauna and flora. Within the forest there are three cycling and walking trails. Other big forest area is  <hl> Kabaty <hl>  Forest by the southern city border. Warsaw has also two botanic gardens: by the \u0141azienki park (a didactic-research unit of the University of Warsaw) as well as by the Park of Culture and Rest in Powsin (a unit of the Polish Academy of Science).",
+        "answer": "Kabaty",
+        "question": "What forest is by Warsaw's southern border?",
+        "prediction": " What is another big forest area in Warsaw? "
+    },
+    {
+        "context": "A teacher's professional duties may extend beyond formal teaching. Outside of the classroom  <hl> teachers <hl>  may accompany students on field trips, supervise study halls, help with the organization of school functions, and serve as supervisors for extracurricular activities. In some education systems, teachers may have responsibility for student discipline.",
+        "answer": "teachers",
+        "question": "Who might be responsible for student discipline?",
+        "prediction": " Who may accompany students on field trips? "
+    },
+    {
+        "context": "Tesla was asocial and prone to seclude himself with his work. However, when he did engage in a social life, many people spoke very positively and admiringly of Tesla. Robert Underwood Johnson described him as attaining a \"distinguished sweetness, sincerity, modesty, refinement, generosity, and force.\" His loyal secretary,  <hl> Dorothy Skerrit <hl> , wrote: \"his genial smile and nobility of bearing always denoted the gentlemanly characteristics that were so ingrained in his soul.\" Tesla's friend, Julian Hawthorne, wrote, \"seldom did one meet a scientist or engineer who was also a poet, a philosopher, an appreciator of fine music, a linguist, and a connoisseur of food and drink.\":80",
+        "answer": "Dorothy Skerrit",
+        "question": "Who was Tesla's secretary? ",
+        "prediction": " Who was Tesla's loyal secretary? "
+    },
+    {
+        "context": "Warsaw (Polish: Warszawa [var\u02c8\u0282ava] ( listen); see also other names) is the capital and largest city of Poland. It stands on the Vistula River in east-central Poland, roughly 260 kilometres (160 mi) from the Baltic Sea and 300 kilometres (190 mi) from the Carpathian Mountains. Its population is estimated at 1.740 million residents within a greater metropolitan area of 2.666 million residents, which makes Warsaw the  <hl> 9th <hl>  most-populous capital city in the European Union. The city limits cover 516.9 square kilometres (199.6 sq mi), while the metropolitan area covers 6,100.43 square kilometres (2,355.39 sq mi).",
+        "answer": "9th",
+        "question": "Where does Warsaw rank in terms of population in the EU?",
+        "prediction": " What is Warsaw the most-populous capital city in the European Union? "
+    },
+    {
+        "context": "In  <hl> 1937 <hl> , at a luncheon in his honor concerning the death ray, Tesla stated, \"But it is not an experiment ... I have built, demonstrated and used it. Only a little time will pass before I can give it to the world.\" His records indicate that the device is based on a narrow stream of small tungsten pellets that are accelerated via high voltage (by means akin to his magnifying transformer).",
+        "answer": "1937",
+        "question": "When did Tesla claim to have built the weapon?",
+        "prediction": " In what year did Tesla say that the death ray was not an experiment? "
+    },
+    {
+        "context": "After leaving Edison's company Tesla partnered with two businessmen in 1886,  <hl> Robert Lane and Benjamin Vail <hl> , who agreed to finance an electric lighting company in Tesla's name, Tesla Electric Light & Manufacturing. The company installed electrical arc light based illumination systems designed by Tesla and also had designs for dynamo electric machine commutators, the first patents issued to Tesla in the US.",
+        "answer": "Robert Lane and Benjamin Vail",
+        "question": "Who did Tesla partner with in 1886?",
+        "prediction": " Who agreed to finance Tesla Electric Light & Manufacturing? "
+    },
+    {
+        "context": "The further decline of Byzantine state-of-affairs paved the road to a third attack in 1185, when a large Norman army invaded  <hl> Dyrrachium <hl> , owing to the betrayal of high Byzantine officials. Some time later, Dyrrachium\u2014one of the most important naval bases of the Adriatic\u2014fell again to Byzantine hands.",
+        "answer": "Dyrrachium",
+        "question": "What was the naval base called?",
+        "prediction": " What did Norman army invade in 1185? "
+    },
+    {
+        "context": "Similarly, it is not known if L (the set of all problems that can be solved in logarithmic space) is strictly contained in P or equal to P. Again, there are many complexity classes between the two, such as  <hl> NL and NC <hl> , and it is not known if they are distinct or equal classes.",
+        "answer": "NL and NC",
+        "question": "What are two complexity classes between L and P?",
+        "prediction": " What are many complexity classes between the two? "
+    },
+    {
+        "context": "The objective is typically accomplished through either an informal or formal approach to learning, including a course of study and lesson plan that teaches skills, knowledge and/or thinking skills. Different ways to teach are often referred to as pedagogy. When deciding what teaching method to use teachers consider students' background knowledge, environment, and their learning goals as well as standardized curricula as determined by the relevant authority. Many times, teachers assist in learning outside of the classroom by accompanying students on field trips. The  <hl> increasing use of technology <hl> , specifically the rise of the internet over the past decade, has begun to shape the way teachers approach their roles in the classroom.",
+        "answer": "increasing use of technology",
+        "question": "What has started to change the way teachers teach in the classroom, generally?",
+        "prediction": " What has begun to shape the way teachers approach their roles in the classroom? "
+    },
+    {
+        "context": "The FSO Car Factory was established in 1951. A number of vehicles have been assembled there over the decades, including the Warszawa, Syrena, Fiat 125p (under license from Fiat, later renamed FSO 125p when the license expired) and the Polonez. The last two models listed were also sent abroad and assembled in a number of other countries, including Egypt and Colombia. In 1995 the factory was purchased by the South Korean car manufacturer Daewoo, which assembled the Tico, Espero, Nubia, Tacuma, Leganza, Lanos and Matiz there for the European market. In 2005 the factory was sold to  <hl> AvtoZAZ <hl> , a Ukrainian car manufacturer which assembled there the Chevrolet Aveo. The license for the production of the Aveo expired in February 2011 and has since not been renewed. Currently the company is defunct.",
+        "answer": "AvtoZAZ",
+        "question": "Who bought the factory in 2005?",
+        "prediction": " Who sold the Chevrolet Aveo in 2005? "
+    },
+    {
+        "context": "Whilst this is the consensus viewpoint amongst the majority of academics,  <hl> some teachers and parents <hl>  advocate a more assertive and confrontational style of discipline.[citation needed] Such individuals claim that many problems with modern schooling stem from the weakness in school discipline and if teachers exercised firm control over the classroom they would be able to teach more efficiently. This viewpoint is supported by the educational attainment of countries\u2014in East Asia for instance\u2014that combine strict discipline with high standards of education.[citation needed]",
+        "answer": "some teachers and parents",
+        "question": "Who wants a more confrontational type of discipline?",
+        "prediction": "  "
+    },
+    {
+        "context": "In April 1191 Richard the Lion-hearted left Messina with a large fleet in order to reach Acre. But a storm dispersed the fleet. After some searching, it was discovered that the boat carrying his sister and his fianc\u00e9e Berengaria was anchored on the south coast of Cyprus, together with the wrecks of several other ships, including the treasure ship. Survivors of the wrecks had been taken prisoner by the island's despot  <hl> Isaac Komnenos <hl> . On 1 May 1191, Richard's fleet arrived in the port of Limassol on Cyprus. He ordered Isaac to release the prisoners and the treasure. Isaac refused, so Richard landed his troops and took Limassol.",
+        "answer": "Isaac Komnenos",
+        "question": "Who ruled Cyprus in 1191?",
+        "prediction": " Who was the island's despot? "
+    },
+    {
+        "context": "The legendary religious zeal of the Normans was exercised in religious wars long before the First Crusade carved out a Norman principality in Antioch. They were major foreign participants in the Reconquista in Iberia. In 1018, Roger de Tosny travelled to the Iberian Peninsula to carve out a state for himself from Moorish lands, but failed. In 1064, during the War of Barbastro,  <hl> William of Montreuil <hl>  led the papal army and took a huge booty.",
+        "answer": "William of Montreuil",
+        "question": "Who was in charge of the papal army in the War of Barbastro?",
+        "prediction": " Who led the papal army during the War of Barbastro? "
+    },
+    {
+        "context": "Near the end of his life, Tesla walked to the park every day to feed the pigeons and even brought injured ones into his hotel room to nurse back to health. He said that he had been visited by a specific injured white pigeon daily. Tesla spent  <hl> over $2,000 <hl> , including building a device that comfortably supported her so her bones could heal, to fix her broken wing and leg. Tesla stated,",
+        "answer": "over $2,000",
+        "question": "How much did Tesla spend on the injured pigeon?",
+        "prediction": " How much did Tesla spend on a white pigeon? "
+    },
+    {
+        "context": "Co-teaching has also become a new trend amongst educational institutions. Co-teaching is defined as two or more teachers working harmoniously to fulfill the needs of every student in the classroom. Co-teaching focuses the student on  <hl> learning <hl>  by providing a social networking support that allows them to reach their full cognitive potential. Co-teachers work in sync with one another to create a climate of learning.",
+        "answer": "learning",
+        "question": "What does co-teaching get the students to focus on?",
+        "prediction": " What does Co-teaching focus the student on? "
+    },
+    {
+        "context": "Upper and lower bounds are usually stated using the big O notation, which hides constant factors and smaller terms. This makes the bounds independent of the specific details of the computational model used. For instance, if T(n) = 7n2 + 15n + 40, in big O notation one would write  <hl> T(n) = O(n2) <hl> .",
+        "answer": "T(n) = O(n2)",
+        "question": "How would one write T(n) = 7n2 + 15n + 40 in big O notation? ",
+        "prediction": " What does one write in big O notation? "
+    },
+    {
+        "context": "This is true throughout most of the United States as well. However, alternative approaches for primary education do exist. One of these, sometimes referred to as a \"platoon\" system, involves placing a group of students together in one class that moves from one specialist to another for every subject. The advantage here is that students learn from teachers who specialize in one subject and who tend to be more  <hl> knowledgeable <hl>  in that one area than a teacher who teaches many subjects. Students still derive a strong sense of security by staying with the same group of peers for all classes.",
+        "answer": "knowledgeable",
+        "question": "The teacher's in a platoon style teaching are usually more _____?",
+        "prediction": " Students learn from teachers who specialize in one subject and tend to be more "
+    },
+    {
+        "context": "Tesla read many works, memorizing complete books, and supposedly possessed a photographic memory.:33 He was a polyglot, speaking  <hl> eight <hl>  languages: Serbo-Croatian, Czech, English, French, German, Hungarian, Italian, and Latin.:282 Tesla related in his autobiography that he experienced detailed moments of inspiration. During his early life, Tesla was repeatedly stricken with illness. He suffered a peculiar affliction in which blinding flashes of light would appear before his eyes, often accompanied by visions.:33 Often, the visions were linked to a word or idea he might have come across; at other times they would provide the solution to a particular problem he had encountered. Just by hearing the name of an item, he would be able to envision it in realistic detail.:33 Tesla would visualize an invention in his mind with extreme precision, including all dimensions, before moving to the construction stage, a technique sometimes known as picture thinking. He typically did not make drawings by hand but worked from memory. Beginning in his childhood, Tesla had frequent flashbacks to events that had happened previously in his life.:33",
+        "answer": "eight",
+        "question": "How many languages did Tesla know?",
+        "prediction": " How many languages did Tesla speak? "
+    },
+    {
+        "context": "A few years after the First Crusade, in 1107, the Normans under the command of Bohemond, Robert's son, landed in Valona and besieged Dyrrachium using the most sophisticated military equipment of the time, but to no avail. Meanwhile, they occupied Petrela, the citadel of Mili at the banks of the river  <hl> Deabolis <hl> , Gllavenica (Ballsh), Kanina and Jericho. This time, the Albanians sided with the Normans, dissatisfied by the heavy taxes the Byzantines had imposed upon them. With their help, the Normans secured the Arbanon passes and opened their way to Dibra. The lack of supplies, disease and Byzantine resistance forced Bohemond to retreat from his campaign and sign a peace treaty with the Byzantines in the city of Deabolis.",
+        "answer": "Deabolis",
+        "question": "What river was Petrela located by?",
+        "prediction": " Where did the Normans occupy Petrela? "
+    },
+    {
+        "context": "Analogous definitions can be made for space requirements. Although time and space are the most well-known complexity resources, any complexity measure can be viewed as a computational resource.  <hl> Complexity measures <hl>  are very generally defined by the Blum complexity axioms. Other complexity measures used in complexity theory include communication complexity, circuit complexity, and decision tree complexity.",
+        "answer": "Complexity measures",
+        "question": "Decision tree is an example of what type of measure?",
+        "prediction": " What are generally defined by the Blum complexity axioms? "
+    },
+    {
+        "context": "Tesla worked every day from 9:00 a.m. until 6:00 p.m. or later, with dinner from exactly 8:10 p.m., at Delmonico's restaurant and later the Waldorf-Astoria Hotel. Tesla would telephone his dinner order to the headwaiter, who also could be the only one to serve him. \"The meal was required to be ready at eight o'clock ... He dined alone, except on the rare occasions when he would give a dinner to a group to meet his social obligations. Tesla would then resume his work, often until  <hl> 3:00 a.m <hl> .\":283, 286",
+        "answer": "3:00 a.m",
+        "question": "On some nights how late did Tesla work until?",
+        "prediction": " When did Tesla resume his work? "
+    },
+    {
+        "context": "Tesla investigated atmospheric electricity, observing lightning signals via his receivers. He stated that he observed  <hl> stationary <hl>  waves during this time. The great distances and the nature of what Tesla was detecting from lightning storms confirmed his belief that the earth had a resonant frequency.",
+        "answer": "stationary",
+        "question": "What sort of waves did he claim to observe?",
+        "prediction": " What did Tesla observe during lightning storms? "
+    },
+    {
+        "context": "Legislative power in Warsaw is vested in a unicameral Warsaw City Council (Rada Miasta), which comprises 60 members. Council members are elected directly every four years. Like most legislative bodies, the City Council divides itself into  <hl> committees <hl>  which have the oversight of various functions of the city government. Bills passed by a simple majority are sent to the mayor (the President of Warsaw), who may sign them into law. If the mayor vetoes a bill, the Council has 30 days to override the veto by a two-thirds majority vote.",
+        "answer": "committees",
+        "question": "What does the City Council divide itself into?",
+        "prediction": " What does the City Council divide itself into? "
+    },
+    {
+        "context": "Tesla theorized that the application of electricity to the brain enhanced intelligence. In 1912, he crafted \"a plan to make dull students bright by  <hl> saturating them unconsciously with electricity <hl> ,\" wiring the walls of a schoolroom and, \"saturating [the schoolroom] with infinitesimal electric waves vibrating at high frequency. The whole room will thus, Mr. Tesla claims, be converted into a health-giving and stimulating electromagnetic field or 'bath.'\" The plan was, at least provisionally approved by then superintendent of New York City schools, William H. Maxwell.",
+        "answer": "saturating them unconsciously with electricity",
+        "question": "What was Tesla's plan to make students \"bright\"?",
+        "prediction": " How did Tesla create a plan to make dull students bright? "
+    },
+    {
+        "context": "In 1874, Tesla evaded being drafted into the Austro-Hungarian Army in Smiljan by running away to  <hl> Tomingaj <hl> , near Gra\u010dac. There, he explored the mountains in hunter's garb. Tesla said that this contact with nature made him stronger, both physically and mentally. He read many books while in Tomingaj, and later said that Mark Twain's works had helped him to miraculously recover from his earlier illness.",
+        "answer": "Tomingaj",
+        "question": "Where did Tesla run to avoid the army draft?",
+        "prediction": " Where did Tesla run away? "
+    },
+    {
+        "context": "It's not clear, however that this stereotypical view reflects the reality of East Asian classrooms or that the educational goals in these countries are commensurable with those in Western countries. In  <hl> Japan <hl> , for example, although average attainment on standardized tests may exceed those in Western countries, classroom discipline and behavior is highly problematic. Although, officially, schools have extremely rigid codes of behavior, in practice many teachers find the students unmanageable and do not enforce discipline at all.",
+        "answer": "Japan",
+        "question": "What country has higher scores on standardized tests than the U.S.?",
+        "prediction": " In what country is classroom discipline and behavior highly problematic? "
+    },
+    {
+        "context": "Tesla never married; he said his  <hl> chastity <hl>  was very helpful to his scientific abilities.:33 However, toward the end of his life, he told a reporter, \"Sometimes I feel that by not marrying, I made too great a sacrifice to my work ...\" There have been numerous accounts of women vying for Tesla's affection, even some madly in love with him.[citation needed] Tesla, though polite and soft-spoken, did not have any known relationships.",
+        "answer": "chastity",
+        "question": "What characteristic did Tesla say helped his scientific abilities?",
+        "prediction": " What did Tesla say was very helpful to his scientific abilities? "
+    },
+    {
+        "context": "In 1875, Tesla enrolled at Austrian Polytechnic in Graz, Austria, on a Military Frontier scholarship. During his first year, Tesla never missed a lecture, earned the highest grades possible, passed nine exams (nearly twice as many required), started a Serbian culture club, and even received a letter of commendation from the dean of the technical faculty to his father, which stated, \"Your son is a star of first rank.\" Tesla claimed that he worked from 3 a.m. to 11 p.m.,  <hl> no <hl>  Sundays or holidays excepted. He was \"mortified when [his] father made light of [those] hard won honors.\" After his father's death in 1879, Tesla found a package of letters from his professors to his father, warning that unless he were removed from the school, Tesla would be killed through overwork. During his second year, Tesla came into conflict with Professor Poeschl over the Gramme dynamo, when Tesla suggested that commutators weren't necessary. At the end of his second year, Tesla lost his scholarship and became addicted to gambling. During his third year, Tesla gambled away his allowance and his tuition money, later gambling back his initial losses and returning the balance to his family. Tesla said that he \"conquered [his] passion then and there,\" but later he was known to play billiards in the US. When exam time came, Tesla was unprepared and asked for an extension to study, but was denied. He never graduated from the university and did not receive grades for the last semester.",
+        "answer": "no",
+        "question": "Did Tesla graduate from the university?",
+        "prediction": " What did Tesla claim he worked from 3 a.m. to 11 p.m.? question"
+    },
+    {
+        "context": "Tesla was raised an Orthodox Christian. Later in his life, he did not consider himself to be a \"believer in the orthodox sense,\" and opposed religious fanaticism. Despite this, he had a profound respect for both  <hl> Buddhism and Christianity <hl> .",
+        "answer": "Buddhism and Christianity",
+        "question": "Which two religions did Tesla express respect for?",
+        "prediction": " What did Tesla respect for? "
+    },
+    {
+        "context": "Nikola Tesla (Serbian Cyrillic: \u041d\u0438\u043a\u043e\u043b\u0430 \u0422\u0435\u0441\u043b\u0430; 10 July 1856 \u2013 7 January  <hl> 1943 <hl> ) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.",
+        "answer": "1943",
+        "question": "In what year did Tesla die? ",
+        "prediction": " "
+    },
+    {
+        "context": "On 30 July 1891, at the age of 35, Tesla became a naturalized citizen of the United States, and established his South Fifth Avenue laboratory, and later another at 46 E. Houston Street, in New York. He lit electric lamps wirelessly at both locations, demonstrating the potential of wireless power transmission. In the same year, he patented  <hl> the Tesla coil. <hl> ",
+        "answer": "the Tesla coil.",
+        "question": "What did Tesla patent in 1891?",
+        "prediction": " What did Tesla patent in 1891? "
+    },
+    {
+        "context": "Sudbury model democratic schools claim that popularly based authority can maintain order more effectively than dictatorial authority for governments and schools alike. They also claim that in these schools the preservation of public order is easier and more efficient than anywhere else. Primarily because rules and regulations are made by the community as a whole, thence the school atmosphere is one of persuasion and negotiation, rather than confrontation since there is no one to confront. Sudbury model democratic schools' proponents argue that a school that has  <hl> good, clear laws <hl> , fairly and democratically passed by the entire school community, and a good judicial system for enforcing these laws, is a school in which community discipline prevails, and in which an increasingly sophisticated concept of law and order develops, against other schools today, where rules are arbitrary, authority is absolute, punishment is capricious, and due process of law is unknown.",
+        "answer": "good, clear laws",
+        "question": "What must be passed using democratic means by the entire school community?",
+        "prediction": " What does Sudbury model democratic schools say is a school that has? "
+    },
+    {
+        "context": "Tesla obtained around 300 patents worldwide for his inventions. Some of Tesla's patents are not accounted for, and various sources have discovered some that have lain hidden in  <hl> patent archives <hl> . There are a minimum of 278 patents issued to Tesla in 26 countries that have been accounted for. Many of Tesla's patents were in the United States, Britain, and Canada, but many other patents were approved in countries around the globe.:62 Many inventions developed by Tesla were not put into patent protection.",
+        "answer": "patent archives",
+        "question": " Where were missing patents later found?",
+        "prediction": " Some of Tesla's patents are not accounted for? "
+    },
+    {
+        "context": "When considering computational problems, a problem instance is a string over an alphabet. Usually, the alphabet is taken to be the  <hl> binary alphabet <hl>  (i.e., the set {0,1}), and thus the strings are bitstrings. As in a real-world computer, mathematical objects other than bitstrings must be suitably encoded. For example, integers can be represented in binary notation, and graphs can be encoded directly via their adjacency matrices, or by encoding their adjacency lists in binary.",
+        "answer": "binary alphabet",
+        "question": "What is the name of the alphabet is most commonly used in a problem instance?",
+        "prediction": " What is the alphabet taken to be? "
+    },
+    {
+        "context": "In  <hl> March 1896 <hl> , after hearing of Wilhelm R\u00f6ntgen's discovery of X-ray and X-ray imaging (radiography), Tesla proceeded to do his own experiments in X-ray imaging, developing a high energy single terminal vacuum tube of his own design that had no target electrode and that worked from the output of the Tesla Coil (the modern term for the phenomenon produced by this device is bremsstrahlung or braking radiation). In his research, Tesla devised several experimental setups to produce X-rays. Tesla held that, with his circuits, the \"instrument will ... enable one to generate Roentgen rays of much greater power than obtainable with ordinary apparatus.\"",
+        "answer": "March 1896",
+        "question": "when did tesla begin researching x-ray imaging?",
+        "prediction": " When did Wilhelm R\u00f6ntgen discover X-ray and X-ray imaging? "
+    },
+    {
+        "context": "In 1898, Tesla demonstrated a radio-controlled boat\u2014which he dubbed \"teleautomaton\"\u2014to the public during an electrical exhibition at  <hl> Madison Square Garden <hl> . The crowd that witnessed the demonstration made outrageous claims about the workings of the boat, such as magic, telepathy, and being piloted by a trained monkey hidden inside. Tesla tried to sell his idea to the U.S. military as a type of radio-controlled torpedo, but they showed little interest. Remote radio control remained a novelty until World War I and afterward, when a number of countries used it in military programs. Tesla took the opportunity to further demonstrate \"Teleautomatics\" in an address to a meeting of the Commercial Club in Chicago, while he was travelling to Colorado Springs, on 13 May 1899.",
+        "answer": "Madison Square Garden",
+        "question": "Where was the boat demonstration given?",
+        "prediction": " Where did Tesla demonstrate a radio-controlled boat? "
+    },
+    {
+        "context": "Tesla's theories on the possibility of the transmission by radio waves go back as far as lectures and demonstrations in 1893 in St. Louis, Missouri,  <hl> the Franklin Institute <hl>  in Philadelphia, Pennsylvania, and the National Electric Light Association. Tesla's demonstrations and principles were written about widely through various media outlets. Many devices such as the Tesla Coil were used in the further development of radio.",
+        "answer": "the Franklin Institute",
+        "question": "What Philadelphia institution did Tesla give a demonstration to?",
+        "prediction": " What did Tesla's theories on the possibility of transmission by radio waves go back as far as lectures and demonstrations in 1893"
+    },
+    {
+        "context": "Norman architecture typically stands out as a new stage in the architectural history of the regions they subdued. They spread a unique  <hl> Romanesque <hl>  idiom to England and Italy, and the encastellation of these regions with keeps in their north French style fundamentally altered the military landscape. Their style was characterised by rounded arches, particularly over windows and doorways, and massive proportions.",
+        "answer": "Romanesque",
+        "question": "What is the Norman architecture idiom?",
+        "prediction": " What did Norman architecture spread to England and Italy? "
+    },
+    {
+        "context": "Analogous definitions can be made for space requirements. Although time and space are the most well-known complexity resources, any complexity measure can be viewed as a computational resource. Complexity measures are very generally defined by the  <hl> Blum complexity axioms <hl> . Other complexity measures used in complexity theory include communication complexity, circuit complexity, and decision tree complexity.",
+        "answer": "Blum complexity axioms",
+        "question": "What is typically used to broadly define complexity measures?",
+        "prediction": " What are complexity measures defined by? "
+    },
+    {
+        "context": "In 1875, Tesla enrolled at Austrian Polytechnic in Graz, Austria, on a Military Frontier scholarship. During his first year, Tesla never missed a lecture, earned the highest grades possible, passed nine exams (nearly twice as many required), started a Serbian culture club, and even received a letter of commendation from the dean of the technical faculty to his father, which stated, \"Your son is a star of first rank.\" Tesla claimed that he worked from 3 a.m. to 11 p.m., no Sundays or holidays excepted. He was \"mortified when [his] father made light of [those] hard won honors.\" After his father's death in  <hl> 1879 <hl> , Tesla found a package of letters from his professors to his father, warning that unless he were removed from the school, Tesla would be killed through overwork. During his second year, Tesla came into conflict with Professor Poeschl over the Gramme dynamo, when Tesla suggested that commutators weren't necessary. At the end of his second year, Tesla lost his scholarship and became addicted to gambling. During his third year, Tesla gambled away his allowance and his tuition money, later gambling back his initial losses and returning the balance to his family. Tesla said that he \"conquered [his] passion then and there,\" but later he was known to play billiards in the US. When exam time came, Tesla was unprepared and asked for an extension to study, but was denied. He never graduated from the university and did not receive grades for the last semester.",
+        "answer": "1879",
+        "question": "In what year did Tesla's father die?",
+        "prediction": " When did Tesla die? "
+    },
+    {
+        "context": "There are a variety of bodies designed to instill, preserve and update the knowledge and professional standing of teachers. Around the world many governments operate  <hl> teacher's colleges <hl> , which are generally established to serve and protect the public interest through certifying, governing and enforcing the standards of practice for the teaching profession.",
+        "answer": "teacher's colleges",
+        "question": "What do government's run that affects teachers?",
+        "prediction": " What are many governments operating around the world? "
+    },
+    {
+        "context": "The investors showed little interest in Tesla's ideas for new types of motors and electrical transmission equipment and also seemed to think it was better to develop an electrical utility than invent new systems. They eventually forced Tesla out leaving him penniless. He even lost control of the patents he had generated since he had  <hl> assigned them to the company in lieu of stock. <hl>  He had to work at various electrical repair jobs and even as a ditch digger for $2 per day. Tesla considered the winter of 1886/1887 as a time of \"terrible headaches and bitter tears.\" During this time, he questioned the value of his education.",
+        "answer": "assigned them to the company in lieu of stock.",
+        "question": "What did Tesla do with his patents causing him to lose them?",
+        "prediction": " What did Tesla lose control of his patents? "
+    },
+    {
+        "context": "Tesla noted the hazards of working with his circuit and single-node X-ray-producing devices. In his many notes on the early investigation of this phenomenon, he attributed the skin damage to various causes. He believed early on that damage to the skin was not caused by the Roentgen rays, but by the  <hl> ozone generated in contact with the skin <hl> , and to a lesser extent, by nitrous acid. Tesla incorrectly believed that X-rays were longitudinal waves, such as those produced in waves in plasmas. These plasma waves can occur in force-free magnetic fields.",
+        "answer": "ozone generated in contact with the skin",
+        "question": "At first what did Tesla think was the main cause of damage to skin cells when they were exposed to X-rays?",
+        "prediction": " What did Tesla believe was caused by the Roentgen rays? "
+    },
+    {
+        "context": "Tesla, like many of his era, became a proponent of an imposed selective breeding version of eugenics. His opinion stemmed from the belief that humans' \"pity\" had interfered with the natural \" <hl> ruthless <hl>  workings of nature,\" rather than from conceptions of a \"master race\" or inherent superiority of one person over another. His advocacy of it was, however, to push it further. In a 1937 interview, he stated:",
+        "answer": "ruthless",
+        "question": "What was his belief as to what nature was supposed to be?",
+        "prediction": " What did Tesla say in a 1937 interview? "
+    },
+    {
+        "context": "In 1873, Tesla returned to his birthtown, Smiljan. Shortly after he arrived, Tesla contracted cholera; he was bedridden for nine months and was near death multiple times. Tesla's father, in a moment of despair, promised  <hl> to send him to the best engineering school <hl>  if he recovered from the illness (his father had originally wanted him to enter the priesthood).",
+        "answer": "to send him to the best engineering school",
+        "question": "What bargain did his father make with him if Tesla recovered?",
+        "prediction": " What did Tesla's father promise? "
+    },
+    {
+        "context": "Tesla later approached Morgan to ask for more funds to build a more powerful transmitter. When asked where all the money had gone, Tesla responded by saying that he was affected by the  <hl> Panic of 1901 <hl> , which he (Morgan) had caused. Morgan was shocked by the reminder of his part in the stock market crash and by Tesla's breach of contract by asking for more funds. Tesla wrote another plea to Morgan, but it was also fruitless. Morgan still owed Tesla money on the original agreement, and Tesla had been facing foreclosure even before construction of the tower began.",
+        "answer": "Panic of 1901",
+        "question": "On what did Tesla blame for the loss of the initial money?",
+        "prediction": " What did Morgan say Tesla was affected by? "
+    },
+    {
+        "context": "The most commonly used reduction is a polynomial-time reduction. This means that the reduction process takes  <hl> polynomial time <hl> . For example, the problem of squaring an integer can be reduced to the problem of multiplying two integers. This means an algorithm for multiplying two integers can be used to square an integer. Indeed, this can be done by giving the same input to both inputs of the multiplication algorithm. Thus we see that squaring is not more difficult than multiplication, since squaring can be reduced to multiplication.",
+        "answer": "polynomial time",
+        "question": "What measurement of time is used in polynomial time reduction?",
+        "prediction": " How long does the reduction process take? "
+    },
+    {
+        "context": "Tesla was  <hl> asocial <hl>  and prone to seclude himself with his work. However, when he did engage in a social life, many people spoke very positively and admiringly of Tesla. Robert Underwood Johnson described him as attaining a \"distinguished sweetness, sincerity, modesty, refinement, generosity, and force.\" His loyal secretary, Dorothy Skerrit, wrote: \"his genial smile and nobility of bearing always denoted the gentlemanly characteristics that were so ingrained in his soul.\" Tesla's friend, Julian Hawthorne, wrote, \"seldom did one meet a scientist or engineer who was also a poet, a philosopher, an appreciator of fine music, a linguist, and a connoisseur of food and drink.\":80",
+        "answer": "asocial",
+        "question": "With what word was Tesla's sociability described?",
+        "prediction": " What was Tesla's name? "
+    },
+    {
+        "context": "On 17 May 1899, Tesla moved to Colorado Springs, where he would have room for his high-voltage, high-frequency experiments; his lab was located near Foote Ave. and Kiowa St. He chose this location because the polyphase alternating current power distribution system had been introduced there and he had associates who were willing to give him all the power he needed without charging for it. Upon his arrival, he told reporters that he was conducting wireless telegraphy experiments, transmitting signals from Pikes Peak to Paris.[citation needed] The 1978 book Colorado Springs Notes, 1899\u20131900 contains descriptions of Tesla's experiments. On 15 June 1899, Tesla performed his first experiments at his Colorado Springs lab; he recorded his initial spark length at  <hl> five inches <hl>  long, but very thick and noisy.",
+        "answer": "five inches",
+        "question": "What was the recorded length of the first spark?",
+        "prediction": " How long did Tesla's initial spark length be? "
+    },
+    {
+        "context": "One of the things Tesla developed at that laboratory in 1887 was an induction motor that ran on alternating current, a power system format that was starting to be built in Europe and the United States because of its advantages in long-distance, high-voltage transmission. The motor used polyphase current which generated a rotating magnetic field to turn the motor (a principle Tesla claimed to have conceived in 1882). This innovative electric motor, patented in May 1888, was a simple self-starting design that did not need a commutator, thus avoiding sparking and the high maintenance of constantly servicing and replacing  <hl> mechanical brushes <hl> .",
+        "answer": "mechanical brushes",
+        "question": "What high maintenance part did Tesla's AC motor not require?",
+        "prediction": " What did Tesla use to replace? "
+    },
+    {
+        "context": "However, his religious views remain  <hl> uncertain <hl>  due to other statements that he made. For example, in his article, \"A Machine to End War\", published in 1937, Tesla stated:",
+        "answer": "uncertain",
+        "question": "Because of certain statements what was the believed state of his religious views?",
+        "prediction": " What does Tesla's religious views remain? "
+    },
+    {
+        "context": "Many of Tesla's writings are freely available on the web, including the article \"The Problem of Increasing Human Energy,\" published in The Century Magazine in 1900, and the article \"Experiments With Alternate Currents Of High Potential And High Frequency,\" published in his book  <hl> Inventions, Researches and Writings of Nikola Tesla. <hl> ",
+        "answer": "Inventions, Researches and Writings of Nikola Tesla.",
+        "question": "What was one of Tesla's books where articles can be read?",
+        "prediction": " What is Tesla's book published in? "
+    },
+    {
+        "context": "Tesla, like many of his era, became a proponent of an imposed selective breeding version of eugenics. His opinion stemmed from the belief that humans' \"pity\" had interfered with the natural \"ruthless workings of nature,\" rather than from conceptions of a \"master race\" or inherent superiority of one person over another. His advocacy of it was, however, to push it further. In a  <hl> 1937 <hl>  interview, he stated:",
+        "answer": "1937",
+        "question": "When did he talk about his beliefs in an interview?",
+        "prediction": " In what year did Tesla speak about eugenics? "
+    },
+    {
+        "context": "In 1888, the editor of Electrical World magazine, Thomas Commerford Martin (a friend and publicist), arranged for Tesla to demonstrate his alternating current system, including his induction motor, at the  <hl> American Institute of Electrical Engineers <hl>  (now IEEE). Engineers working for the Westinghouse Electric & Manufacturing Company reported to George Westinghouse that Tesla had a viable AC motor and related power system \u2014 something for which Westinghouse had been trying to secure patents. Westinghouse looked into getting a patent on a similar commutator-less, rotating magnetic field-based induction motor presented in a paper in March 1888 by the Italian physicist Galileo Ferraris, but decided Tesla's patent would probably control the market.",
+        "answer": "American Institute of Electrical Engineers",
+        "question": "What is the IEEE?",
+        "prediction": " Where did Thomas Commerford Martin demonstrate his alternating current system? "
+    },
+    {
+        "context": "In 1893, George Westinghouse won the bid to light the 1893 World's Columbian Exposition in Chicago with alternating current, beating out a General Electric bid by one million dollars. This World's Fair devoted a building to electrical exhibits. It was a key event in the history of AC power, as Westinghouse demonstrated the safety, reliability, and efficiency of a fully integrated alternating current system to the American public. At the Columbian Exposition, under a banner announcing the \" <hl> Tesla Polyphase System <hl> \", Tesla demonstrated a series of electrical effects previously performed throughout America and Europe,:76 included using high-voltage, high-frequency alternating current to light a wireless gas-discharge lamp.:79 An observer noted:",
+        "answer": "Tesla Polyphase System",
+        "question": "What did Tesla call his electrical effects in 1893?",
+        "prediction": " What did George Westinghouse announce at the Columbian Exposition? "
+    },
+    {
+        "context": "On 7 January 1900, Tesla left Colorado Springs.[citation needed] His lab was torn down in 1904, and its contents were  <hl> sold <hl>  two years later to satisfy a debt.",
+        "answer": "sold",
+        "question": "What happened to the things inside the lab after it was torn down?",
+        "prediction": " What did Tesla's lab contain? "
+    },
+    {
+        "context": "Decision problems are one of the central objects of study in computational complexity theory. A decision problem is a special type of computational problem whose answer is either  <hl> yes <hl>  or no, or alternately either 1 or 0. A decision problem can be viewed as a formal language, where the members of the language are instances whose output is yes, and the non-members are those instances whose output is no. The objective is to decide, with the aid of an algorithm, whether a given input string is a member of the formal language under consideration. If the algorithm deciding this problem returns the answer yes, the algorithm is said to accept the input string, otherwise it is said to reject the input.",
+        "answer": "yes",
+        "question": "What will the output be for a member of the language of a decision problem?",
+        "prediction": " What is the answer to a decision problem? "
+    },
+    {
+        "context": "Tesla theorized that the  <hl> application of electricity <hl>  to the brain enhanced intelligence. In 1912, he crafted \"a plan to make dull students bright by saturating them unconsciously with electricity,\" wiring the walls of a schoolroom and, \"saturating [the schoolroom] with infinitesimal electric waves vibrating at high frequency. The whole room will thus, Mr. Tesla claims, be converted into a health-giving and stimulating electromagnetic field or 'bath.'\" The plan was, at least provisionally approved by then superintendent of New York City schools, William H. Maxwell.",
+        "answer": "application of electricity",
+        "question": "What did Tesla think could improve the brain's intelligence?",
+        "prediction": " What did Tesla say was enhanced intelligence? "
+    },
+    {
+        "context": "During the same year, Tesla wrote a treatise, The Art of Projecting Concentrated Non-dispersive Energy through the Natural Media, concerning charged particle beam weapons. Tesla published the document in an attempt to expound on the technical description of a \"superweapon that would put an end to all war.\" This treatise is currently in the  <hl> Nikola Tesla Museum archive <hl>  in Belgrade. It describes an open-ended vacuum tube with a gas jet seal that allows particles to exit, a method of charging particles to millions of volts, and a method of creating and directing non-dispersive particle streams (through electrostatic repulsion). Tesla tried to interest the US War Department, the United Kingdom, the Soviet Union, and Yugoslavia in the device.",
+        "answer": "Nikola Tesla Museum archive",
+        "question": "Where can the Treatise be found?",
+        "prediction": " Where is the treatise currently in? "
+    },
+    {
+        "context": "What intractability means in practice is open to debate. Saying that a problem is not in P does not imply that all large cases of the problem are hard or even that most of them are. For example, the decision problem in Presburger arithmetic has been shown not to be in P, yet algorithms have been written that solve the problem in reasonable times in most cases. Similarly, algorithms can solve the NP-complete knapsack problem over a wide range of sizes in less than quadratic time and SAT solvers routinely handle large instances of the  <hl> NP-complete Boolean satisfiability problem <hl> .",
+        "answer": "NP-complete Boolean satisfiability problem",
+        "question": "What is the example of another problem characterized by large instances that is routinely solved by SAT handlers employing efficient algorithms?",
+        "prediction": " What does SAT solvers routinely handle large instances of? "
+    },
+    {
+        "context": "But bounding the computation time above by some concrete function f(n) often yields complexity classes that depend on the chosen machine model. For instance, the language {xx | x is any binary string} can be solved in linear time on a multi-tape Turing machine, but necessarily requires quadratic time in the model of single-tape Turing machines. If we allow polynomial variations in running time,  <hl> Cobham-Edmonds thesis <hl>  states that \"the time complexities in any two reasonable and general models of computation are polynomially related\" (Goldreich 2008, Chapter 1.2). This forms the basis for the complexity class P, which is the set of decision problems solvable by a deterministic Turing machine within polynomial time. The corresponding set of function problems is FP.",
+        "answer": "Cobham-Edmonds thesis",
+        "question": "What thesis specifies that a polynomial relationship exists within time complexities in a computational model? ",
+        "prediction": " What thesis states that \"the time complexities in any two reasonable and general models of computation are polynomially related\""
+    },
+    {
+        "context": "In April  <hl> 1191 <hl>  Richard the Lion-hearted left Messina with a large fleet in order to reach Acre. But a storm dispersed the fleet. After some searching, it was discovered that the boat carrying his sister and his fianc\u00e9e Berengaria was anchored on the south coast of Cyprus, together with the wrecks of several other ships, including the treasure ship. Survivors of the wrecks had been taken prisoner by the island's despot Isaac Komnenos. On 1 May 1191, Richard's fleet arrived in the port of Limassol on Cyprus. He ordered Isaac to release the prisoners and the treasure. Isaac refused, so Richard landed his troops and took Limassol.",
+        "answer": "1191",
+        "question": "What year did the storm hit Richard's fleet?",
+        "prediction": " When did Richard the Lion-hearted leave Messina? "
+    },
+    {
+        "context": "In 1873, Tesla returned to his birthtown, Smiljan. Shortly after he arrived, Tesla contracted cholera; he was bedridden for nine months and was near death multiple times. Tesla's father, in a moment of despair, promised to send him to the best engineering school if he recovered from the illness (his father had originally wanted him to  <hl> enter the priesthood <hl> ).",
+        "answer": "enter the priesthood",
+        "question": "What did Tesla's father originally want him to do?",
+        "prediction": " What did Tesla's father originally want him to do? "
+    },
+    {
+        "context": "Teaching using pedagogy also involve assessing the educational levels of the students on particular skills. Understanding the pedagogy of the students in a classroom involves using differentiated instruction as well as supervision to meet the needs of all students in the classroom. Pedagogy can be thought of in two manners. First, teaching itself can be taught in many different ways, hence, using a pedagogy of teaching styles. Second, the pedagogy of the learners comes into play when a teacher assesses the pedagogic diversity of his/her students and differentiates for the individual students accordingly. For example, an experienced teacher and parent described the place of a teacher in learning as follows: \"The real bulk of learning takes place in self-study and problem solving with a lot of feedback around that loop. The function of the teacher is to pressure the lazy, inspire the bored,  <hl> deflate <hl>  the cocky, encourage the timid, detect and correct individual flaws, and broaden the viewpoint of all. This function looks like that of a coach using the whole gamut of psychology to get each new class of rookies off the bench and into the game.\"",
+        "answer": "deflate",
+        "question": "What would a teacher do for someone who is cocky?",
+        "prediction": " What is the function of the teacher? "
+    },
+    {
+        "context": "In March 1896, after hearing of Wilhelm R\u00f6ntgen's discovery of X-ray and  <hl> X-ray imaging <hl>  (radiography), Tesla proceeded to do his own experiments in X-ray imaging, developing a high energy single terminal vacuum tube of his own design that had no target electrode and that worked from the output of the Tesla Coil (the modern term for the phenomenon produced by this device is bremsstrahlung or braking radiation). In his research, Tesla devised several experimental setups to produce X-rays. Tesla held that, with his circuits, the \"instrument will ... enable one to generate Roentgen rays of much greater power than obtainable with ordinary apparatus.\"",
+        "answer": "X-ray imaging",
+        "question": "What did Tesla begin to research in March 1896?",
+        "prediction": " What did Wilhelm R\u00f6ntgen discover in 1896? "
+    },
+    {
+        "context": "Tesla was raised an  <hl> Orthodox Christian <hl> . Later in his life, he did not consider himself to be a \"believer in the orthodox sense,\" and opposed religious fanaticism. Despite this, he had a profound respect for both Buddhism and Christianity.",
+        "answer": "Orthodox Christian",
+        "question": "What religion did Tesla grow up in?",
+        "prediction": " What was Tesla raised? "
+    },
+    {
+        "context": "Since teachers can affect how students perceive the course materials, it has been found that teachers who showed enthusiasm towards the course materials and students can affect a positive learning experience towards the course materials. On teacher/course evaluations, it was found that teachers who have a positive disposition towards the course content tend to transfer their  <hl> passion <hl>  to receptive students. These teachers do not teach by rote but attempt to find new invigoration for the course materials on a daily basis. One of the difficulties in this approach is that teachers may have repeatedly covered a curriculum until they begin to feel bored with the subject which in turn bores the students as well. Students who had enthusiastic teachers tend to rate them higher than teachers who didn't show much enthusiasm for the course materials.",
+        "answer": "passion",
+        "question": "What gets transferred to students who are receptive to the teacher?",
+        "prediction": " What do teachers who have a positive disposition towards the course content tend to transfer to receptive students? ques"
+    },
+    {
+        "context": "Warsaw, especially its city centre (\u015ar\u00f3dmie\u015bcie), is home not only to many national institutions and government agencies, but also to many domestic and international companies. In 2006, 304,016 companies were registered in the city. Warsaw's ever-growing business community has been noticed globally, regionally, and nationally. MasterCard Emerging Market Index has noted Warsaw's economic strength and commercial center. Moreover, Warsaw was ranked as the 7th greatest emerging market. Foreign investors' financial participation in the city's development was estimated in 2002 at over 650 million euro. Warsaw produces 12% of Poland's national income, which in 2008 was 305.1% of the Polish average, per capita (or 160% of the European Union average). The GDP per capita in Warsaw amounted to PLN 94 000 in 2008 (c. EUR 23 800, USD 33 000). Total nominal GDP of the city in 2010 amounted to  <hl> 191.766 billion PLN <hl> , 111696 PLN per capita, which was 301,1 % of Polish average. Warsaw leads the region of East-Central Europe in foreign investment and in 2006, GDP growth met expectations with a level of 6.1%. It also has one of the fastest growing economies, with GDP growth at 6.5 percent in 2007 and 6.1 percent in the first quarter of 2008.",
+        "answer": "191.766 billion PLN",
+        "question": "What was the total nominal GDP of Warsaw in 2010?",
+        "prediction": " What was the total nominal GDP of Warsaw in 2010? "
+    },
+    {
+        "context": "In 1935, in an annual birthday celebration interview, Tesla announced a method of transmitting mechanical energy with minimal loss over any terrestrial distance, a related new means of communication, and a method of accurately determining the location of underground  <hl> mineral deposits <hl> .",
+        "answer": "mineral deposits",
+        "question": "What did he hope to locate underground?",
+        "prediction": " What are underground underground? "
+    },
+    {
+        "context": "The Normans had a profound effect on  <hl> Irish <hl>  culture and history after their invasion at Bannow Bay in 1169. Initially the Normans maintained a distinct culture and ethnicity. Yet, with time, they came to be subsumed into Irish culture to the point that it has been said that they became \"more Irish than the Irish themselves.\" The Normans settled mostly in an area in the east of Ireland, later known as the Pale, and also built many fine castles and settlements, including Trim Castle and Dublin Castle. Both cultures intermixed, borrowing from each other's language, culture and outlook. Norman descendants today can be recognised by their surnames. Names such as French, (De) Roche, Devereux, D'Arcy, Treacy and Lacy are particularly common in the southeast of Ireland, especially in the southern part of County Wexford where the first Norman settlements were established. Other Norman names such as Furlong predominate there. Another common Norman-Irish name was Morell (Murrell) derived from the French Norman name Morel. Other names beginning with Fitz (from the Norman for son) indicate Norman ancestry. These included Fitzgerald, FitzGibbons (Gibbons) dynasty, Fitzmaurice. Other families bearing such surnames as Barry (de Barra) and De B\u00farca (Burke) are also of Norman extraction.",
+        "answer": "Irish",
+        "question": "What culture did the Normans combine with in Ireland?",
+        "prediction": " What did the Normans have a profound effect on? "
+    },
+    {
+        "context": "Tesla noted the hazards of working with his circuit and single-node X-ray-producing devices. In his many notes on the early investigation of this phenomenon, he attributed the skin damage to various causes. He believed early on that damage to the skin was not caused by the Roentgen rays, but by the ozone generated in contact with the skin, and to a lesser extent, by nitrous acid. Tesla incorrectly believed that  <hl> X-rays were longitudinal waves <hl> , such as those produced in waves in plasmas. These plasma waves can occur in force-free magnetic fields.",
+        "answer": "X-rays were longitudinal waves",
+        "question": "What did tesla incorrectly believe about x-rays?",
+        "prediction": " Tesla incorrectly believed that hl>"
+    },
+    {
+        "context": "In 1893 Richard Dean Adams, who headed up the Niagara Falls Cataract Construction Company sought Tesla's opinion on what system would be best to transmit power generated at the falls. Over several years there had been a series of proposals and open competitions on how best to utilize power generated by the falls with many systems being proposed by several US and European companies including two-phase and three-phase AC, high-voltage DC, and even compressed air. Adams pumped Tesla for information about the current state of all the competing systems. Tesla advised Adams that a two-phased system would be the most reliable and that there was a Westinghouse system to light incandescent bulbs using two-phase alternating current. Based on Tesla's advice and Westinghouse's demonstration that they could build a complete AC system at the Columbian Exposition, a contract for building a two-phase AC generating system at the Niagara Falls was awarded to Westinghouse Electric. A further contract to build the AC distribution system was awarded to  <hl> General Electric <hl> .",
+        "answer": "General Electric",
+        "question": "What company was chosen to build an AC distribution system at Niagara Falls?",
+        "prediction": " Who was awarded a contract to build the AC distribution system at the Niagara Falls? "
+    },
+    {
+        "context": "For a precise definition of what it means to solve a problem using a given amount of time and space, a computational model such as the deterministic Turing machine is used. The time required by a deterministic Turing machine M on input x is the total number of state transitions, or steps, the machine makes before it halts and outputs the answer (\"yes\" or \"no\"). A Turing machine M is said to operate within time f(n), if the time required by M on each input of length n is at most f(n). A decision problem A can be solved in time f(n) if there exists a Turing machine operating in time f(n) that solves the problem. Since complexity theory is interested in classifying problems based on their  <hl> difficulty <hl> , one defines sets of problems based on some criteria. For instance, the set of problems solvable within time f(n) on a deterministic Turing machine is then denoted by DTIME(f(n)).",
+        "answer": "difficulty",
+        "question": "Complexity theory classifies problems based on what primary attribute?",
+        "prediction": " What is complexity theory interested in classifying problems based on? "
+    }
+]

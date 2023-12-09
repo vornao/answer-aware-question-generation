@@ -25,13 +25,13 @@ from transformers import (
 from peft import LoraConfig
 from trl import SFTTrainer
 
-TOKEN_QUESTION = "<question>"
-TOKEN_END_QUESTION = "<question>"
-TOKEN_CONTEXT = "<context>"
-TOKEN_END_CONTEXT = "<context>"
-TOKEN_ANSWER = "<answer>"
-TOKEN_END_ANSWER = "<answer>"
-HIGHLIGHT_ANSWER = "<hl>"
+TOKEN_QUESTION = "### Question:"
+TOKEN_END_QUESTION = ""
+TOKEN_CONTEXT = "### Context:"
+TOKEN_END_CONTEXT = ""
+TOKEN_ANSWER = "### Answer:"
+TOKEN_END_ANSWER = "### Answer:"
+HIGHLIGHT_ANSWER = ""
 SPLIT_SEED = 42
 NPROC = 32
 HIGHLIGHT = True
@@ -83,15 +83,14 @@ train_config = TrainingArguments(
     num_train_epochs=EPOCHS,
     per_device_train_batch_size=BATCH_SIZE,
     per_device_eval_batch_size=BATCH_SIZE,
-    learning_rate=1e-4,
-    weight_decay=0.01,
+    learning_rate=2e-4,
+    weight_decay=0.001,
     logging_dir=log_dir,
-    logging_steps=50,
+    logging_steps=10,
     save_steps=500,
-    save_total_limit=1,
+    save_total_limit=3,
     gradient_accumulation_steps=1,
     fp16=True,
-    load_best_model_at_end=True,
     seed=42,
     greater_is_better=False,
     local_rank=0,
@@ -99,7 +98,7 @@ train_config = TrainingArguments(
     metric_for_best_model="eval_loss",
     evaluation_strategy="steps",
     save_strategy="steps",
-    eval_steps=500,
+    eval_steps=250,
     #deepspeed="./deepspeed_config.json",
 )
 
@@ -119,13 +118,18 @@ def get_inputs_target(e):
         + HIGHLIGHT_ANSWER
         + " "
         + e["context"][answer_start + ans_len :]
+        + " "
+        + TOKEN_ANSWER
+        + " "
+        + e["answers"]["text"][0]
+        + " "
+        + TOKEN_END_ANSWER
     )
 
     return {
         # answer + context + question for causal language modeling
-        "text": f'<s> [INST] generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT} [/INST] {TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION} <s>',
+        "text": f'<s>[INST] <<SYS>> You are a question generation system. Generate questions for the given answer <answer>, matching the context. Each question starts after <question> and starts with a question word like "who, what, where, when" <<SYS>> {e["context"]} [/INST] {TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION} </s>',
     }
-
 
 def preprocess_squad_dataset(dataset_name="squad", split="train"):
     dataset = datasets.load_dataset(dataset_name, split=split)
@@ -133,20 +137,19 @@ def preprocess_squad_dataset(dataset_name="squad", split="train"):
     dataset = dataset.remove_columns(["answers", "context", "question"])
     return dataset
 
-
 # load dataset
 train_dataset = preprocess_squad_dataset(dataset_name="squad", split="train")
 valid_dataset = preprocess_squad_dataset(dataset_name="squad", split="validation")
 
 
-# Quantization Config
+compute_dtype = getattr(torch, "float16")
+
 quant_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.float16,
-    bnb_4bit_use_double_quant=False
+    bnb_4bit_compute_dtype=compute_dtype,
+    bnb_4bit_use_double_quant=True,
 )
-
 # Quantize Model
 peft_config = LoraConfig(
     r=LORA_R, 
@@ -158,9 +161,10 @@ peft_config = LoraConfig(
 print("> Loading model...")
 model = AutoModelForCausalLM.from_pretrained(
     PRETRAINED_MODEL, 
-    #quantization_config=quant_config, 
-    load_in_4bit=True,
-    low_cpu_mem_usage=True
+    #quantization_config=quant_config,
+    #
+    #low_cpu_mem_usage=True,
+    #device_map="auto",
 )
 print("> Model loaded!")
 
@@ -172,18 +176,17 @@ print("> Tokenizer loaded!")
 
 trainer = SFTTrainer(
     model=model,
-    train_dataset=train_dataset.shuffle(seed=SPLIT_SEED).select(range(40000)),
-    eval_dataset=valid_dataset.select(range(1000)),
+    train_dataset=train_dataset.shuffle(seed=SPLIT_SEED).select(range(1000)),
+    eval_dataset=valid_dataset.shuffle(seed=SPLIT_SEED).select(range(200)),
     peft_config=peft_config,
     dataset_text_field="text",
     tokenizer=llama_tokenizer,
     args=train_config,
-    max_seq_length=64,
 )
 
 trainer.train()
 
-trainer.save_model(save_dir)
+model.save_pretrained(save_dir)
 
 
 

@@ -43,7 +43,7 @@ model_name = args.model_name
 
 
 model = transformers.T5ForConditionalGeneration.from_pretrained(
-    f"./models/{model_name}/", device_map="cuda:2", low_cpu_mem_usage=True
+    f"./models/{model_name}/", device_map="cuda:2"
 )
 tokenizer = transformers.AutoTokenizer.from_pretrained(f"./models/{model_name}")
 torch.cuda.empty_cache()
@@ -75,7 +75,7 @@ def get_inputs_target(e):
 
     return {
         # answer + context
-        "inputs": f'generate question: {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT}',
+        "inputs": f'generate question: {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT}',
         # question
         "target": f'{TOKEN_QUESTION} {e["question"]} {TOKEN_END_QUESTION}',
     }

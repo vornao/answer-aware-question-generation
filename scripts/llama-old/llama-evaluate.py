@@ -3,10 +3,23 @@ import transformers
 import argparse
 import torch
 import os
+import json
+import datasets
 
-from datasets import load_from_disk
 from numpy import mean
 from tqdm import tqdm
+
+TOKEN_QUESTION = "<question>"
+TOKEN_END_QUESTION = "<question>"
+TOKEN_CONTEXT = "<context>"
+TOKEN_END_CONTEXT = "<context>"
+TOKEN_ANSWER = "<answer>"
+TOKEN_END_ANSWER = "<answer>"
+HIGHLIGHT_ANSWER = "<hl>"
+SPLIT_SEED = 42
+NPROC = 32
+HIGHLIGHT = True
+
 
 # clear console
 os.system("cls" if os.name == "nt" else "clear")
@@ -20,7 +33,7 @@ HEADER = """
 """
 print(HEADER)
 bertscore = evaluate.load("bertscore")
-dataset = load_from_disk("./dataset/stackoverflow-paired-11k/sft")
+rouge = evaluate.load("rouge")
 
 parser = argparse.ArgumentParser(
     prog="Llama evaluation tool", description="Evaluate llama 2 with bertscore"
@@ -30,22 +43,7 @@ parser.add_argument("--seed", default=42)
 parser.add_argument("--device", default="cuda:0")
 args = parser.parse_args()
 
-# create evaluation folder if not exists
-if not os.path.exists("./evaluation"):
-    print("> Creating evaluation folder...")
-    os.mkdir("./evaluation")
 
-# if no model is specified, use the default one and warn the user
-if args.model == "./llama/huggingface":
-    print("> WARNING: No model specified, using default pretrained one.")
-    print("> WARNING: You can specify a model with --model <path_to_model>")
-
-nf4_config = transformers.BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.float16,
-)
 
 LLAMA_PATH = args.model
 # print device
@@ -73,54 +71,97 @@ bert_f1 = []
 
 outputs: list = []
 
-val_dataset = dataset.train_test_split(test_size=0.05, seed=args.seed)["test"].shuffle(
-    args.seed
-)
 
+def get_inputs_target(e):
+    answer_start = e["answers"]["answer_start"][0]
+    # add highlight token to context
+    ans_len = len(e["answers"]["text"][0])
+
+    e["context"] = (
+        e["context"][:answer_start]
+        + " "
+        + HIGHLIGHT_ANSWER
+        + " "
+        + e["context"][answer_start : answer_start + ans_len]
+        + " "
+        + HIGHLIGHT_ANSWER
+        + " "
+        + e["context"][answer_start + ans_len :]
+    )
+
+    return {
+        # answer + context + question for causal language modeling
+        "text": f'<s> [INST] generate question: {TOKEN_CONTEXT} {e["context"]} {TOKEN_END_CONTEXT} {TOKEN_ANSWER} {e["answers"]["text"][0]} {TOKEN_END_ANSWER} [/INST] {TOKEN_QUESTION}  <s>',
+        "target": e["question"],
+    }
+
+
+def preprocess_squad_dataset(dataset_name="squad", split="train"):
+    dataset = datasets.load_dataset(dataset_name, split=split).select(1000,2000)
+    dataset = dataset.map(get_inputs_target, num_proc=NPROC)
+    dataset = dataset.remove_columns(["answers", "context", "question"])
+    return dataset
+
+
+# load dataset
+valid_dataset = preprocess_squad_dataset(dataset_name="squad", split="validation")
+
+predictions = []
+targets = []
+
+# generate questions for each example
 print("> Starting evaluation...")
 with tqdm(total=100) as pbar:
-    for example in val_dataset.select(range(100)):
-        q = example["question"]
-        a = example["response_j"]
+    for example in valid_dataset.select(range(100)):
+        q = example["target"]
         sequences = pipeline(
-            f"### Question: {q} ### Answer: ",
+            example['text'],
             do_sample=True,
             top_k=10,
             temperature=0.9,
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
-            max_new_tokens=256,
+            max_new_tokens=64,
         )
         prediction = str([s["generated_text"] for s in sequences])
-        try:
-            prediction = [prediction.split("### Answer:")[1]]
-        except:
-            prediction = [prediction]
-        finally:
-            metric = bertscore.compute(
-                predictions=prediction,
-                references=[a],
-                lang="en",
-                model_type="bert-large-uncased",
-                device=args.device,
-            )
-            bert_precision.append([metric["precision"]])
-            bert_recall.append([metric["recall"]])
-            bert_f1.append([metric["f1"]])
-            pbar.set_postfix(Metric=mean(bert_f1))
-            pbar.update(1)
-            torch.cuda.empty_cache()
-
-        # append output to outputs list in the form of a dict with question, prediction, reference
-        outputs.append({"question": q, "prediction": prediction, "reference": a})
+        print("> Prediction:", prediction)
+        predictions.append(prediction)
+        targets.append(q)
 
 
-# write results to file.
-with open(f"./evaluate/bertscore-{LLAMA_PATH}.json", "w") as f:
-    f.write(
-        f'{{"model":{LLAMA_PATH}, "precision": {mean(bert_precision)}, "recall": {mean(bert_recall)}, "f1": {mean(bert_f1)}}},'
-    )
-    f.write("\n")
-    # write outputs to file
-    f.write(str(outputs))
+print("> Evaluating bertscore...")
+bertscore = bertscore.compute(
+    predictions=predictions,
+    references=targets,
+    lang="en",
+    model_type="bert-large-uncased",
+    device=args.device,
+)
+
+print("> Bertscore results:")
+print(bertscore)
+
+print("> Evaluating rouge...")
+rouge = rouge.compute(
+    predictions=predictions,
+    references=targets,
+    lang="en",
+    model_type="bert-large-uncased",
+    device=args.device,
+)
+
+print("> Rouge results:")
+print(rouge)
+
+print("> Done!")
+
+metrics = {
+    "bertscore": bertscore,
+    "rouge": rouge,
+    "predictions": predictions,
+    "targets": targets,
+}
+
+with open("./models/llama-7B/metrics.json", "w") as f:
+    json.dump(metrics, f)
