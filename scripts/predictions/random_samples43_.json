@@ -1,0 +1,82 @@
+[
+    {
+        "context": "One of the things Tesla developed at that laboratory in 1887 was an induction motor that ran on alternating current, a power system format that was starting to be built in Europe and the United States because of its advantages in long-distance, high-voltage transmission. The motor used polyphase current which generated a rotating magnetic field to turn the motor (a principle Tesla claimed to have conceived in 1882). This innovative electric motor, patented in May 1888, was a simple self-starting design that did not need a commutator, thus avoiding sparking and the high maintenance of constantly servicing and replacing  <hl> mechanical brushes <hl> .",
+        "answer": "mechanical brushes",
+        "t5base": "Tesla's induction motor avoided sparking and the high maintenance of constantly servicing and replacing what?",
+        "t5small": "What did Tesla use to replace?",
+        "t5ppo": "Tesla's electric motor avoided sparking and the high maintenance of constantly servicing and replacing what?",
+        "llama": "What did commutators require that induction motors did not?"
+    },
+    {
+        "context": "Tesla's theories on the possibility of the transmission by radio waves go back as far as lectures and demonstrations in 1893 in St. Louis, Missouri,  <hl> the Franklin Institute <hl>  in Philadelphia, Pennsylvania, and the National Electric Light Association. Tesla's demonstrations and principles were written about widely through various media outlets. Many devices such as the Tesla Coil were used in the further development of radio.",
+        "answer": "the Franklin Institute",
+        "t5base": "What was the name of the institute in Philadelphia, Pennsylvania?",
+        "t5small": "What did Tesla's theories on the possibility of transmission by radio waves go back as far as lectures and demonstrations in 1893",
+        "t5ppo": "What was the name of the institute in Philadelphia, Pennsylvania?",
+        "llama": "Where did Tesla demonstrate his radio wave theories?"
+    },
+    {
+        "context": "However, his religious views remain  <hl> uncertain <hl>  due to other statements that he made. For example, in his article, \"A Machine to End War\", published in 1937, Tesla stated:",
+        "answer": "uncertain",
+        "t5base": "What are Tesla's religious views?",
+        "t5small": "What does Tesla's religious views remain?",
+        "t5ppo": "What are Tesla's religious views?",
+        "llama": "What is the general consensus on Tesla\\'s religious views?"
+    },
+    {
+        "context": "Before the actual research explicitly devoted to the complexity of algorithmic problems started off, numerous foundations were laid out by various researchers. Most influential among these was the definition of Turing machines by  <hl> Alan Turing <hl>  in 1936, which turned out to be a very robust and flexible simplification of a computer.",
+        "answer": "Alan Turing",
+        "t5base": "Who defined Turing machines in 1936?",
+        "t5small": "Who defined Turing machines?",
+        "t5ppo": "Who defined Turing machines in 1936?",
+        "llama": "Who is credited with the invention of the Turing machine?"
+    },
+    {
+        "context": "Analogous definitions can be made for space requirements. Although time and space are the most well-known complexity resources, any complexity measure can be viewed as a computational resource. Complexity measures are very generally defined by the  <hl> Blum complexity axioms <hl> . Other complexity measures used in complexity theory include communication complexity, circuit complexity, and decision tree complexity.",
+        "answer": "Blum complexity axioms",
+        "t5base": "What are complexity measures defined by?",
+        "t5small": "What are complexity measures defined by?",
+        "t5ppo": "What are complexity measures generally defined by?",
+        "llama": "What defines a complexity measure?"
+    },
+    {
+        "context": "Tesla was raised an Orthodox Christian. Later in his life, he did not consider himself to be a \"believer in the orthodox sense,\" and opposed religious fanaticism. Despite this, he had a profound respect for both  <hl> Buddhism and Christianity <hl> .",
+        "answer": "Buddhism and Christianity",
+        "t5base": "Tesla had a profound respect for what?",
+        "t5small": "What did Tesla respect for?",
+        "t5ppo": "Tesla had a profound respect for what?",
+        "llama": "What religions did Tesla have a profound respect for?"
+    },
+    {
+        "context": "The most commonly used reduction is a polynomial-time reduction. This means that the reduction process takes  <hl> polynomial time <hl> . For example, the problem of squaring an integer can be reduced to the problem of multiplying two integers. This means an algorithm for multiplying two integers can be used to square an integer. Indeed, this can be done by giving the same input to both inputs of the multiplication algorithm. Thus we see that squaring is not more difficult than multiplication, since squaring can be reduced to multiplication.",
+        "answer": "polynomial time",
+        "t5base": "What time does a polynomial-time reduction take?",
+        "t5small": "How long does the reduction process take?",
+        "t5ppo": "How long does a polynomial-time reduction take?",
+        "llama": "What is the most common reduction?"
+    },
+    {
+        "context": "Tesla worked every day from 9:00 a.m. until 6:00 p.m. or later, with dinner from exactly 8:10 p.m., at Delmonico's restaurant and later the Waldorf-Astoria Hotel. Tesla would telephone his dinner order to the headwaiter, who also could be the only one to serve him. \"The meal was required to be ready at eight o'clock ... He dined alone, except on the rare occasions when he would give a dinner to a group to meet his social obligations. Tesla would then resume his work, often until  <hl> 3:00 a.m <hl> .\":283, 286",
+        "answer": "3:00 a.m",
+        "t5base": "When would Tesla resume his work?",
+        "t5small": "When did Tesla resume his work?",
+        "t5ppo": "When would Tesla resume his work?",
+        "llama": "What time did Tesla often work until?"
+    },
+    {
+        "context": "Tesla, like many of his era, became a proponent of an imposed selective breeding version of eugenics. His opinion stemmed from the belief that humans' \"pity\" had interfered with the natural \"ruthless workings of nature,\" rather than from conceptions of a \"master race\" or inherent superiority of one person over another. His advocacy of it was, however, to push it further. In a  <hl> 1937 <hl>  interview, he stated:",
+        "answer": "1937",
+        "t5base": "In what year did Tesla speak about eugenics?",
+        "t5small": "In what year did Tesla speak about eugenics?",
+        "t5ppo": "When did Tesla speak about eugenics?",
+        "llama": "In what year did Tesla state that he believed in eugenics?"
+    },
+    {
+        "context": "Tesla, like many of his era, became a proponent of an imposed selective breeding version of eugenics. His opinion stemmed from the belief that humans' \"pity\" had interfered with the natural \" <hl> ruthless <hl>  workings of nature,\" rather than from conceptions of a \"master race\" or inherent superiority of one person over another. His advocacy of it was, however, to push it further. In a 1937 interview, he stated:",
+        "answer": "ruthless",
+        "t5base": "Tesla believed humans' \"pity\" had interfered with the natural workings of nature?",
+        "t5small": "What did Tesla say in a 1937 interview?",
+        "t5ppo": "Tesla believed humans' \"pity\" had interfered with the natural workings of nature?",
+        "llama": "What did Tesla believe humans\\' \"pity\" had interfered with?"
+    }
+]
