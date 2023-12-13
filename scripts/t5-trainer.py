@@ -18,10 +18,6 @@ bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
 )
 
-DEEPSPEED_CONFIG = (
-    "/storagenfs/l.miglior/answer-aware-question-generation/configs/t5deepspeed.json"
-)
-
 TOKEN_QUESTION = "<question>"
 TOKEN_END_QUESTION = "<question>"
 TOKEN_CONTEXT = "<context>"
@@ -38,11 +34,11 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("--model_name", type=str, default="t5-base")
 parser.add_argument("--highlight", type=bool, default=True)
-parser.add_argument("--batch_size", type=int, default=32)
+parser.add_argument("--batch_size", type=int, default=8)
 parser.add_argument("--epochs", type=int, default=8)
-parser.add_argument("--lora_alpha", type=int, default=64)
+parser.add_argument("--lora_alpha", type=int, default=16)
 parser.add_argument("--lora_dropout", type=float, default=0.05)
-parser.add_argument("--lora_r", type=int, default=32)
+parser.add_argument("--lora_r", type=int, default=8)
 parser.add_argument("--ds", type=bool, default=False)
 
 args = parser.parse_args()
@@ -185,14 +181,12 @@ def tokenize_function(example, max_context_length=512, max_question_length=32):
 tokenized_dataset_train = train.map(
     tokenize_function,
     batched=True,
-    num_proc=32,
     remove_columns=["inputs", "target", "title", "id"],
 )
 
 tokenized_dataset_validation = validation.select(range(1000)).map(
     tokenize_function,
     batched=True,
-    num_proc=4,
     remove_columns=["inputs", "target", "title", "id"],
 )
 
