@@ -11,8 +11,8 @@ This report explores the capabilities of Transformers, especially Sequence To Se
 - **scripts**: Contains the code for supervised fine-tuning of models and evaluation.
 - **notebooks**: Includes Jupyter notebooks used for quick code runs or exploration.
 - **configs**: Holds DeepSpeed configuration files for parallel Zero3 model training.
-- **results**: Stores the results of your experiments.
-- **report**: Contains the LaTeX report for your project.
+- **results**: Stores some samples of generated questions and evaluation metrics.
+- **report**: Final delivered (LaTeX) report.
 
 ## Dependencies
 
